@@ -1,126 +1,117 @@
 ---
 title: "Event 2"
-date: 2024-01-01
-weight: 1
+date: 2026-07-11
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Event 2 Summary Report
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+## Event Objectives
 
-### Event Objectives
+- Provide practical knowledge about operating and securing systems in cloud environments.
+- Explain the roles of SLAs and monitoring in maintaining system availability and stability.
+- Share the AWS Cloud Practitioner exam scope and practical certification-preparation experience.
+- Explore AWS solutions for protecting web applications from security threats.
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+## Speakers and Topics
 
-### Speakers
+- **Nguyen Huynh Son** — *SLA and Monitoring - From SLA to Monitoring What Really Matters*
+- **Ngo Le Tan Huy** — *Inside the Exam: AWS Cloud Practitioner*
+- **Thinh Nguyen** — *Securing Your Web Apps with AWS Security Agent*
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+## Presentation Overview
 
-### Key Highlights
+### SLAs and Monitoring in Cloud Systems
 
-#### Identifying the drawbacks of legacy application architecture
+- The concept of a **Service Level Agreement (SLA)** and its role in measuring service quality.
+- Important operational indicators:
+  - Availability.
+  - Reliability.
+  - Performance.
+  - Response time.
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+- The difference between general infrastructure monitoring and measuring indicators that directly affect user experience.
+- Approaches for building a monitoring system that detects problems early and supports faster incident response.
 
-#### Transitioning to modern application architecture – Microservices
+### AWS Cloud Practitioner and Certification Preparation
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+- Overview of the **AWS Certified Cloud Practitioner** exam structure.
+- The main knowledge domains:
+  - Cloud Concepts.
+  - AWS Services.
+  - Security and Compliance.
+  - Pricing and Billing.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+- Study methods, time allocation, and exam-taking strategies.
+- The importance of mastering cloud fundamentals before studying advanced AWS services.
 
-#### Domain-Driven Design (DDD)
+### Securing Web Applications on AWS
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+- Common vulnerabilities and cybersecurity threats affecting modern web applications.
+- AWS tools and solutions for protecting applications.
+- The roles of multiple defense layers in a cloud architecture:
+  - Access control.
+  - Data protection.
+  - Threat detection and prevention.
 
-#### Event-Driven Architecture
+- Automated security services that help reduce operational risk in cloud environments.
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+## Personal Takeaways
 
-#### Compute Evolution
+### System Operations
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+- Understood that an SLA is a measurable quality commitment that directly affects service success.
+- Learned how to select useful metrics for monitoring system health.
+- Recognized that monitoring is not only for finding errors, but also for improving performance and user experience.
 
-#### Amazon Q Developer
+### AWS Fundamentals
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+- Reviewed and organized knowledge about core AWS services.
+- Understood the knowledge areas and preparation path for the AWS Cloud Practitioner certification.
+- Identified a clearer direction for pursuing more advanced AWS certifications.
 
-### Key Takeaways
+### Cloud Security
 
-#### Design Mindset
+- Recognized the importance of including security from the earliest architecture-design stage.
+- Learned to identify potential threats when deploying web applications to the cloud.
+- Understood basic methods for building protective layers with AWS security services.
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+## Proposed Applications
 
-#### Technical Architecture
+- Apply monitoring knowledge to build dashboards and alerts for cloud applications.
+- Identify and measure operational indicators that matter to actual users.
+- Prepare a structured AWS Cloud Practitioner study plan based on the shared exam domains.
+- Apply standard security principles when designing and deploying applications on AWS.
+- Design systems with fault tolerance, early incident detection, and continuous operation in mind.
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+## Event Experience
 
-#### Modernization Strategy
+The event provided practical lessons that broadened my understanding of how professional cloud systems should be built and operated.
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+### System Operations Lessons
 
-### Applying to Work
+- The SLA and monitoring session showed that a good product requires more than functionality; stable operation is equally important.
+- Availability, performance, and reliability provide practical measures for evaluating service quality.
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+### Organizing AWS Knowledge
 
-### Event Experience
+- The AWS Cloud Practitioner session provided an overview that helped consolidate my AWS fundamentals.
+- Advice from experienced learners offered a more systematic approach to certification preparation.
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+### Improving Security Awareness
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+- The web-security session reinforced the principle of **Security by Design**, where security is considered throughout development.
+- I better understood the value of automated tools for protecting cloud data and applications.
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+### Core Lessons
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+- Cloud operation is continuous: deployment is only the beginning, while monitoring and protection remain essential.
+- Strong fundamentals are required before working with complex cloud solutions.
+- Security is not an optional addition; it must be included in the system design.
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+### Event Photos
+![Event 2](/images/4-EventParticipated/Event2.jpg)
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+> Overall, the event improved my understanding of cloud operations, from performance measurement and SLA management to security monitoring and protection.

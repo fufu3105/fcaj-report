@@ -1,125 +1,118 @@
 ---
 title: "Event 2"
-date: 2024-01-01
-weight: 1
+date: 2026-07-11
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Báo Cáo Thu Hoạch Event 2
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+## Mục Tiêu Sự Kiện
 
-### Mục Đích Của Sự Kiện
+- Trang bị kiến thức thực chiến về quy trình vận hành cũng như bảo mật hệ thống trên nền tảng Điện toán đám mây.
+- Đánh giá đúng vai trò của SLA và Monitoring trong việc duy trì tính sẵn sàng, ổn định cho hệ thống.
+- Tiếp cận định hướng nội dung và tích lũy kinh nghiệm thực tế để chinh phục chứng chỉ AWS Cloud Practitioner.
+- Khám phá các giải pháp tối ưu nhằm bảo vệ web application trước các mối đe dọa an ninh bằng hệ sinh thái AWS.
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+## Danh Sách Diễn Giả & Chủ Đề
 
-### Danh Sách Diễn Giả
+- **Nguyễn Huỳnh Sơn** - Chủ đề: *SLA and Monitoring - From SLA to Monitoring what really matters*
+- **Ngo Le Tan Huy** - Chủ đề: *Inside The Exam: AWS Cloud Practitioner*
+- **Thinh Nguyen** - Chủ đề: *Securing Your Web Apps With AWS Security Agent*
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+## Tổng Quan Nội Dung Bài Tham Luận
 
-### Nội Dung Nổi Bật
+### SLA và Monitoring trong hệ thống Cloud
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+- Phân tích khái niệm **Service Level Agreement (SLA)** và vai trò then chốt của SLA trong việc đo lường chất lượng dịch vụ.
+- Đi sâu vào các chỉ số vận hành cốt lõi:
+  - Availability (Tính sẵn sàng).
+  - Reliability (Độ tin cậy).
+  - Performance (Hiệu năng).
+  - Response Time (Thời gian phản hồi).
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+- Phân biệt sự khác nhau giữa giám sát hệ thống thuần túy và việc theo dõi các chỉ số trực tiếp tác động tới trải nghiệm người dùng.
+- Chiến lược thiết lập hệ thống Monitoring chuẩn chỉnh nhằm phát hiện sớm và xử lý nhanh các sự cố phát sinh.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+### AWS Cloud Practitioner và kinh nghiệm chuẩn bị chứng chỉ
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+- Tổng quan về cấu trúc bài thi **AWS Certified Cloud Practitioner**.
+- Phân tích các miền kiến thức trọng tâm:
+  - Cloud Concepts (Khái niệm Cloud).
+  - AWS Services (Các dịch vụ AWS).
+  - Security and Compliance (Bảo mật và Tuân thủ).
+  - Pricing and Billing (Định giá và Thanh toán).
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+- Chia sẻ bí quyết ôn luyện, lộ trình phân bổ thời gian và phương pháp làm bài đạt kết quả tối ưu.
+- Nhấn mạnh tầm quan trọng của việc làm chủ kiến thức nền tảng trước khi đi sâu vào các dịch vụ nâng cao.
 
-#### Domain-Driven Design (DDD)
+### Bảo mật ứng dụng web trên AWS
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+- Tổng hợp các lỗ hổng và nguy cơ an ninh mạng phổ biến đối với các ứng dụng web hiện đại.
+- Tổng quan các giải pháp, công cụ bảo vệ toàn diện ứng dụng trên AWS.
+- Phân tích vai trò của các lớp phòng thủ trong kiến trúc Cloud:
+  - Kiểm soát truy cập (Access Control).
+  - Bảo vệ dữ liệu (Data Protection).
+  - Nhận diện và ngăn chặn các hành vi bất thường (Threat Detection).
 
-#### Event-Driven Architecture
+- Khai thác các dịch vụ bảo mật tự động nhằm chủ động giảm thiểu rủi ro khi vận hành ứng dụng trên Cloud.
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+## Thu Hoạch Cá Nhân
 
-#### Compute Evolution
+### Về Mặt Vận Hành Hệ Thống
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+- Thấu hiểu SLA là cam kết chất lượng cốt lõi ảnh hưởng trực tiếp tới sự thành bại của dịch vụ.
+- Học được cách lựa chọn và tối ưu bộ chỉ số (metrics) phù hợp để theo dõi sức khỏe hệ thống.
+- Định hình lại tư duy: Monitoring không chỉ để phát hiện lỗi mà còn là chìa khóa để tối ưu hiệu năng và nâng cao trải nghiệm người dùng.
 
-#### Amazon Q Developer
+### Về Nền Tảng AWS
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+- Củng cố và hệ thống hóa lại toàn bộ kiến thức về các dịch vụ cốt lõi của AWS.
+- Nắm rõ lộ trình kiến thức và yêu cầu cần thiết để tự tin chinh phục chứng chỉ AWS Cloud Practitioner.
+- Xác định được định hướng phát triển rõ ràng để tiếp tục nâng cao các chứng chỉ AWS chuyên sâu hơn.
 
-### Những Gì Học Được
+### Về Bảo Mật Cloud
 
-#### Tư Duy Thiết Kế
+- Ý thức rõ tầm quan trọng của việc tích hợp tư duy bảo mật ngay từ những bước đầu thiết kế kiến trúc.
+- Nhận diện đầy đủ các mối đe dọa an ninh tiềm ẩn khi đưa ứng dụng web lên môi trường Cloud.
+- Nắm vững các phương pháp thiết lập lá chắn bảo vệ hệ thống nhờ các dịch vụ chuyên dụng từ AWS.
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+## Đề Xuất Hướng Áp Dụng
 
-#### Kiến Trúc Kỹ Thuật
+- Triển khai kiến thức Monitoring để thiết lập các bảng theo dõi (dashboards) và cảnh báo cho ứng dụng trên Cloud.
+- Xác định và đo lường chính xác các chỉ số quan trọng trong các dự án vận hành thực tế.
+- Lập kế hoạch ôn tập phương pháp và khoa học dựa trên cấu trúc chứng chỉ AWS đã được chia sẻ.
+- Áp dụng các nguyên tắc bảo mật tiêu chuẩn khi kiến tạo và triển khai ứng dụng trên hệ sinh thái AWS.
+- Chú trọng thiết kế các hệ thống có tính chịu lỗi cao, tự động phát hiện sự cố và đảm bảo vận hành liên tục.
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+## Cảm Nhận & Trải Nghiệm Tại Sự Kiện
 
-#### Chiến Lược Hiện Đại Hóa
+Sự kiện mang lại nhiều trải nghiệm thực sự đắt giá, giúp tôi mở rộng đáng kể tư duy về quy trình xây dựng cũng như vận hành một hệ thống Cloud chuyên nghiệp.
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+### Bài học vận hành hệ thống
 
-### Ứng Dụng Vào Công Việc
+- Qua chuyên đề **SLA và Monitoring**, tôi nhận ra một phần mềm tốt không chỉ nằm ở tính năng, mà khả năng vận hành bền bỉ mới là yếu tố quyết định.
+- Các khái niệm như Availability, Performance hay Reliability đã cho tôi một bộ thước đo thực tế để đánh giá chất lượng sản phẩm.
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+### Hệ thống hóa kiến thức AWS
 
-### Trải nghiệm trong event
+- Bài chia sẻ về **AWS Cloud Practitioner** đóng vai trò như một bức tranh tổng thể giúp tôi củng cố lại toàn bộ nền tảng AWS.
+- Những góc nhìn từ người đi trước giúp tôi tiết kiệm thời gian và có cách tiếp cận bài bản hơn khi chuẩn bị cho các kỳ thi chứng chỉ.
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+### Nâng cao tư duy bảo mật
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+- Nội dung bảo mật web giúp tôi thấu hiểu nguyên tắc "Security by Design" - bảo mật phải xuyên suốt mọi giai đoạn phát triển.
+- Tôi nhận thức rõ hơn giá trị của các công cụ tự động trong việc bảo vệ tài sản dữ liệu trên môi trường Cloud.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+### Đúc kết cốt lõi
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+- Vận hành Cloud là một quá trình liên tục: triển khai thành công mới chỉ là bắt đầu, giám sát và bảo vệ mới là then chốt.
+- Kiến thức nền tảng vững chắc là bệ phóng bắt buộc trước khi dấn thân vào các giải pháp Cloud phức tạp.
+- Bảo mật không phải là phần gắn thêm, mà phải được tích hợp sẵn trong tư duy thiết kế hệ thống.
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+### Một Số Hình Ảnh Tại Sự Kiện
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+![Event 2](\images\4-EventParticipated\Event2.jpg)
 
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+> Tóm lại, sự kiện đã giúp tôi nâng cao toàn diện góc nhìn về vận hành hệ thống Cloud — từ đo lường hiệu năng, đảm bảo SLA cho đến việc thiết lập các lớp phòng thủ an ninh vững chắc.

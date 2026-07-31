@@ -7,7 +7,7 @@ pre: " <b> 1. </b> "
 ---
 
 {{% notice tip %}}
-This worklog records the internship from **June 1, 2026 to July 31, 2026**. Technical learning activities began on **June 6, 2026**. The first four weeks focused on theory, while the final four weeks applied that knowledge to build and complete the AWS movie recommendation system.
+This journal records the internship process from **June 1, 2026 to July 31, 2026**. The first four weeks focused on self-study of theory; the following four weeks involved applying knowledge to build and refine a movie recommendation system on AWS.
 {{% /notice %}}
 
 **Week 1:** [Program orientation and AWS fundamentals](1.1-week1/)

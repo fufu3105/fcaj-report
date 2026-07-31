@@ -7,7 +7,7 @@ pre: " <b> 1. </b> "
 ---
 
 {{% notice tip %}}
-Nhật ký ghi lại quá trình thực tập từ **01/06/2026 đến 31/07/2026**. Các hoạt động tìm hiểu chuyên môn bắt đầu từ **06/06/2026**. Bốn tuần đầu tập trung củng cố lý thuyết; bốn tuần sau áp dụng kiến thức để xây dựng và hoàn thiện hệ thống gợi ý phim trên AWS.
+Nhật ký ghi lại quá trình thực tập từ **01/06/2026 đến 31/07/2026**. Bốn tuần đầu tập trung tự tìm hiểu lý thuyết; bốn tuần sau áp dụng kiến thức để xây dựng và hoàn thiện hệ thống gợi ý phim trên AWS.
 {{% /notice %}}
 
 **Tuần 1:** [Làm quen chương trình và tìm hiểu nền tảng AWS](1.1-week1/)

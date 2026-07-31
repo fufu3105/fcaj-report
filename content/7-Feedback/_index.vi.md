@@ -1,44 +1,65 @@
 ---
 title: "Chia sẻ, đóng góp ý kiến"
-date: 2024-01-01
+date: 2026-07-31
 weight: 7
 chapter: false
 pre: " <b> 7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
+
+{{% notice tip %}}
+Phần này tổng hợp trải nghiệm của tôi khi tham gia chương trình First Cloud AI Journey, những nội dung mang lại nhiều giá trị nhất, các khó khăn đã gặp và một số đề xuất nhằm cải thiện trải nghiệm cho những học viên sau.
 {{% /notice %}}
 
->Tại đây bạn có thể tự do đóng góp ý kiến cá nhân về những trải nghiệm khi tham gia chương trình First Cloud AI Journey, giúp team FCAJ cải thiện những vấn đề còn thiếu sót dựa trên các hạng mục sau:
+## Trải nghiệm tổng quan
 
-### Đánh giá chung
+Chương trình First Cloud AI Journey tạo cơ hội tìm hiểu AWS thông qua một dự án có cấu trúc thay vì học từng dịch vụ riêng lẻ. Quá trình đi từ kiến thức cloud cơ bản đến kiến trúc, triển khai, kiểm thử, viết tài liệu và cleanup giúp tôi hiểu cách nhiều dịch vụ phối hợp trong cùng một hệ thống.
 
-**1. Môi trường làm việc**  
-Môi trường làm việc rất thân thiện và cởi mở. Các thành viên trong FCAJ luôn sẵn sàng hỗ trợ khi mình gặp khó khăn, kể cả ngoài giờ làm việc. Không gian làm việc gọn gàng, thoải mái, giúp mình tập trung tốt hơn. Tuy nhiên, mình nghĩ có thể bổ sung thêm một số buổi giao lưu hoặc team bonding để mọi người hiểu nhau hơn.
+Dự án hệ thống gợi ý phim phù hợp với định hướng của tôi vì kết hợp phát triển web, xử lý dữ liệu, Machine Learning và hạ tầng cloud. Việc hoàn thành cả ứng dụng và tài liệu workshop cũng giúp tôi cải thiện khả năng trình bày công việc kỹ thuật thay vì chỉ tập trung viết source code.
 
-**2. Sự hỗ trợ của mentor / team admin**  
-Mentor hướng dẫn rất chi tiết, giải thích rõ ràng khi mình chưa hiểu và luôn khuyến khích mình đặt câu hỏi. Team admin hỗ trợ các thủ tục, tài liệu và tạo điều kiện để mình làm việc thuận lợi. Mình đánh giá cao việc mentor cho phép mình thử và tự xử lý vấn đề thay vì chỉ đưa đáp án.
+## Đánh giá chi tiết
 
-**3. Sự phù hợp giữa công việc và chuyên ngành học**  
-Công việc mình được giao phù hợp với kiến thức mình đã học ở trường, đồng thời mở rộng thêm những mảng mới mà mình chưa từng được tiếp cận. Nhờ vậy, mình vừa củng cố kiến thức nền tảng, vừa học thêm kỹ năng thực tế.
+| STT | Hạng mục | Đánh giá | Ý kiến |
+| --- | --- | --- | --- |
+| 1 | Lộ trình học tập | Tốt | Lộ trình tạo được trình tự rõ ràng từ học lý thuyết đến thực hành và hoàn thiện báo cáo. |
+| 2 | Tài liệu học tập | Tốt | AWS Documentation và tài liệu tham khảo FCAJ cung cấp nền tảng tốt, tuy nhiên một số nội dung nâng cao cần chủ động nghiên cứu thêm. |
+| 3 | Mentor và kênh hỗ trợ | Tốt | Các kênh hỗ trợ hữu ích khi cần đặt câu hỏi và so sánh hướng xử lý những vấn đề kỹ thuật. |
+| 4 | Dự án thực hành | Tốt | Dự án bao phủ sự kết hợp thực tế giữa frontend, backend, dữ liệu, ML, bảo mật, triển khai và quản lý chi phí. |
+| 5 | Cộng đồng và chia sẻ | Tốt | Việc chia sẻ tiến độ và tham khảo bài của các thành viên khác mang lại thêm ý tưởng và động lực. |
+| 6 | Thời gian và khối lượng | Khá | Phạm vi tương đối rộng trong 8 tuần, đặc biệt khi phải thực hiện đồng thời code, screenshot AWS, tài liệu song ngữ và kiểm thử. |
 
-**4. Cơ hội học hỏi & phát triển kỹ năng**  
-Trong quá trình thực tập, mình học được nhiều kỹ năng mới như sử dụng công cụ quản lý dự án, kỹ năng làm việc nhóm, và cả cách giao tiếp chuyên nghiệp trong môi trường công ty. Mentor cũng chia sẻ nhiều kinh nghiệm thực tế giúp mình định hướng tốt hơn cho sự nghiệp.
+## Nội dung mang lại nhiều giá trị nhất
 
-**5. Văn hóa & tinh thần đồng đội**  
-Văn hóa công ty rất tích cực: mọi người tôn trọng lẫn nhau, làm việc nghiêm túc nhưng vẫn vui vẻ. Khi có dự án gấp, mọi người cùng nhau cố gắng, hỗ trợ không phân biệt vị trí. Điều này giúp mình cảm thấy mình là một phần của tập thể, dù chỉ là thực tập sinh.
+- Chương trình kết nối lý thuyết AWS với một dự án end-to-end cụ thể.
+- Dự án yêu cầu hiểu cách các dịch vụ phối hợp thay vì chỉ làm theo từng bước riêng lẻ trên console.
+- Quá trình chuẩn bị workshop giúp cải thiện kỹ năng viết tài liệu, sắp xếp screenshot và giải thích kiến trúc.
+- Việc làm việc với IAM, CloudWatch, Budgets và cleanup nâng cao nhận thức về bảo mật, chi phí cloud.
+- Kiểm thử các nhóm khách, người dùng mới và người dùng quay lại giúp hiểu hệ thống gợi ý rõ hơn so với chỉ đánh giá model.
 
-**6. Chính sách / phúc lợi cho thực tập sinh**  
-Công ty có hỗ trợ phụ cấp thực tập và tạo điều kiện về thời gian linh hoạt khi cần thiết. Ngoài ra, việc được tham gia các buổi đào tạo nội bộ là một điểm cộng lớn.
+## Khó khăn đã gặp
 
+- Số lượng công nghệ tương đối lớn: React, FastAPI, Docker, DynamoDB, S3, SageMaker, IAM và các thuật toán gợi ý cần được tìm hiểu cùng lúc.
+- Các lỗi về quyền IAM và cấu hình môi trường đôi khi mất nhiều thời gian để xác định nguyên nhân.
+- Tài nguyên SageMaker có thể phát sinh chi phí nên cần lên kế hoạch thử nghiệm và cleanup cẩn thận.
+- Metric đánh giá recommendation offline dễ thu thập hơn các chỉ số trải nghiệm người dùng thực tế.
+- Việc giữ nội dung tiếng Anh, tiếng Việt, screenshot, câu lệnh và chi tiết triển khai nhất quán cần nhiều thời gian rà soát.
 
-### Một số câu hỏi khác
-- Điều bạn **hài lòng nhất** trong thời gian thực tập?  
-- Điều bạn nghĩ công ty **cần cải thiện** cho các thực tập sinh sau?  
-- Nếu giới thiệu cho bạn bè, bạn có **khuyên họ thực tập ở đây không**? Vì sao?  
+## Đề xuất cải thiện
 
+1. Cung cấp checklist theo từng tuần, trong đó phân biệt yêu cầu tối thiểu và nội dung nâng cao không bắt buộc.
+2. Tổ chức các buổi review kỹ thuật ngắn, đều đặn để học viên phát hiện sớm vấn đề về kiến trúc hoặc quyền truy cập.
+3. Cung cấp starter repository tiêu chuẩn với ví dụ biến môi trường, CI check cơ bản và cấu trúc thư mục rõ ràng.
+4. Bổ sung tài liệu xử lý các lỗi IAM, networking, billing và SageMaker thường gặp.
+5. Chỉ rõ ngay từ đầu những tài nguyên AWS có thể phát sinh phí liên tục và cung cấp cleanup checklist.
+6. Tổ chức buổi demo hoặc peer review cuối chương trình để học viên trình bày kiến trúc và nhận feedback tập trung.
 
-### Đề xuất & mong muốn
-- Bạn có đề xuất gì để cải thiện trải nghiệm trong kỳ thực tập?  
-- Bạn có muốn tiếp tục chương trình này trong tương lai?
-- Góp ý khác (tự do chia sẻ):
+## Khuyến nghị dành cho học viên sau
+
+Tôi sẽ giới thiệu chương trình First Cloud AI Journey cho những sinh viên muốn tiếp cận AWS theo hướng thực hành và sẵn sàng tự học. Trước khi bắt đầu, học viên nên chuẩn bị kiến thức lập trình, Git, Linux command line và phát triển web cơ bản. Đồng thời nên theo dõi chi phí từ ngày đầu và duy trì ghi chú hằng tuần để báo cáo cuối kỳ không trở thành một công việc tách biệt vào cuối chương trình.
+
+## Mong muốn trong tương lai
+
+Tôi mong các phiên bản sau của chương trình bổ sung thêm nội dung về Infrastructure as Code, automated testing, observability, MLOps và triển khai production. Tôi cũng muốn tiếp tục cải thiện dự án bằng cách tự động hóa hạ tầng, hoàn thiện model release pipeline, bổ sung load test và đánh giá gợi ý bằng phản hồi người dùng thực tế.
+
+## Nhận xét cuối cùng
+
+Nhìn chung, chương trình mang lại trải nghiệm học tập tích cực và thực tế. Giá trị lớn nhất không nằm ở một dịch vụ AWS riêng lẻ mà ở việc học cách kết nối hạ tầng cloud, phát triển ứng dụng, dữ liệu, Machine Learning, bảo mật và tài liệu trong cùng một dự án. Khối lượng công việc có nhiều thử thách nhưng giúp tôi nhận ra rõ hơn điểm mạnh hiện tại và những kỹ năng cần tiếp tục phát triển.
