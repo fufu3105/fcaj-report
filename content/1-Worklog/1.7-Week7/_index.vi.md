@@ -1,59 +1,42 @@
 ---
 title: "Worklog Tuần 7"
-date: 2024-01-01
-weight: 1
+date: 2026-07-20
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
+
+{{% notice tip %}}
+Tuần 7 tập trung xây dựng các chiến lược recommendation đã tìm hiểu ở tuần 4. Mô hình được huấn luyện và đánh giá trước khi chạy bằng SageMaker Processing Job, sau đó kết nối với FastAPI qua real-time Endpoint, cache và cơ chế fallback.
 {{% /notice %}}
 
+## Mục tiêu tuần 7
 
-### Mục tiêu tuần 7:
+- Xây dựng phương pháp gợi ý cho khách và người dùng mới.
+- Huấn luyện mô hình implicit ALS cho người dùng quay lại.
+- Kết hợp và đánh giá các kết quả gợi ý.
+- Chạy quy trình xử lý mô hình bằng SageMaker.
+- Tích hợp recommendation Endpoint với backend.
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+## Các công việc triển khai trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Xây dựng weighted popularity ranking cho khách.<br>- Tạo TF-IDF feature và cosine similarity cho người dùng mới.<br>- Kiểm tra kết quả với một số thể loại mẫu. | 20/07/2026 | 20/07/2026 | Pandas, Scikit-learn Documentation |
+| 3 | - Chuyển tương tác thành implicit score.<br>- Huấn luyện mô hình ALS.<br>- Kết hợp candidate bằng weighted Reciprocal Rank Fusion. | 21/07/2026 | 21/07/2026 | Implicit Library Documentation |
+| 4 | - Chia dữ liệu theo thời gian.<br>- Tính Recall@K, NDCG@K và coverage.<br>- Lưu model artifact, mapping và báo cáo đánh giá lên S3. | 22/07/2026 | 22/07/2026 | Scikit-learn, Amazon S3 Documentation |
+| 5 | - Đóng gói lệnh huấn luyện.<br>- Gửi SageMaker Processing Job.<br>- Theo dõi trạng thái job và kiểm tra output trên S3. | 23/07/2026 | 23/07/2026 | Amazon SageMaker Documentation |
+| 6 | - Kiểm tra response của SageMaker Endpoint.<br>- Kết nối FastAPI với Endpoint.<br>- Bổ sung RecommendationCache và fallback về danh sách phổ biến. | 24/07/2026 | 24/07/2026 | SageMaker Runtime, Boto3 Documentation |
 
+## Kết quả đạt được tuần 7
 
-### Kết quả đạt được tuần 7:
+Sau tuần 7, recommendation pipeline đã được xây dựng và kết nối với ứng dụng.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+Một số kết quả đạt được gồm:
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Tạo được danh sách phim phổ biến cho khách.
+- Tạo gợi ý theo thể loại cho người dùng mới.
+- Huấn luyện được mô hình implicit ALS cho người dùng có lịch sử tương tác.
+- Kết hợp được nhiều nguồn candidate và loại bỏ phim không hợp lệ.
+- Lưu model artifact và báo cáo đánh giá trên S3.
+- Gọi được SageMaker Endpoint từ FastAPI và có cache, fallback khi cần thiết.

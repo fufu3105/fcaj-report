@@ -1,59 +1,42 @@
 ---
 title: "Worklog Tuần 1"
-date: 2024-01-01
+date: 2026-06-06
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
+
+{{% notice tip %}}
+Tuần đầu tiên tập trung làm quen với chương trình First Cloud AI Journey và bắt đầu tìm hiểu nền tảng điện toán đám mây từ ngày 06/06/2026. Các nội dung chính gồm mô hình dịch vụ cloud, hạ tầng toàn cầu AWS, bảo mật cơ bản và cách quản lý chi phí.
 {{% /notice %}}
 
+## Mục tiêu tuần 1
 
-### Mục tiêu tuần 1:
+- Làm quen với chương trình, quy trình làm việc và kênh trao đổi của nhóm.
+- Hiểu khái niệm Cloud Computing và các mô hình dịch vụ phổ biến.
+- Nắm tổng quan về hạ tầng toàn cầu và các nhóm dịch vụ AWS.
+- Hiểu trách nhiệm cơ bản của người dùng khi sử dụng tài nguyên cloud.
+- Lập kế hoạch học tập và thực hiện dự án trong 8 tuần.
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+## Các công việc triển khai trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 06/06 | - Đọc nội quy và quy trình thực hiện chương trình.<br>- Làm quen với các kênh trao đổi và cách báo cáo tiến độ.<br>- Lập danh sách nội dung cần học trong 8 tuần. | 06/06/2026 | 06/06/2026 | FCAJ Discord, Notion |
+| 08/06 | - Tìm hiểu khái niệm Cloud Computing.<br>- Phân biệt IaaS, PaaS và SaaS.<br>- Ghi chú lợi ích và hạn chế của điện toán đám mây. | 08/06/2026 | 08/06/2026 | AWS Cloud Essentials, FCAJ |
+| 09/06 | - Tìm hiểu Public Cloud, Private Cloud và Hybrid Cloud.<br>- Tìm hiểu mô hình pay-as-you-go và khả năng mở rộng tài nguyên. | 09/06/2026 | 09/06/2026 | AWS Skill Builder |
+| 10/06 | - Tìm hiểu AWS Region, Availability Zone và Edge Location.<br>- Đọc về tính sẵn sàng cao và khả năng chịu lỗi. | 10/06/2026 | 10/06/2026 | AWS Global Infrastructure Documentation |
+| 12/06 | - Tìm hiểu AWS Shared Responsibility Model.<br>- Tìm hiểu Free Tier, AWS Budgets và các nguyên tắc tránh phát sinh chi phí.<br>- Tổng hợp kiến thức đã học trong tuần. | 12/06/2026 | 12/06/2026 | AWS Documentation |
 
+## Kết quả đạt được tuần 1
 
-### Kết quả đạt được tuần 1:
+Sau tuần đầu tiên, đã nắm được kiến thức nền tảng cần thiết để tiếp tục tìm hiểu các dịch vụ AWS cụ thể.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+Một số kết quả đạt được gồm:
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Hiểu được khái niệm Cloud Computing và các mô hình IaaS, PaaS, SaaS.
+- Phân biệt được Public Cloud, Private Cloud và Hybrid Cloud.
+- Nắm được cách AWS tổ chức hạ tầng theo Region và Availability Zone.
+- Hiểu mô hình chia sẻ trách nhiệm giữa AWS và khách hàng.
+- Có nhận thức ban đầu về Free Tier, quản lý ngân sách và kiểm soát chi phí.
+- Hoàn thành kế hoạch học tập và triển khai dự án trong 8 tuần.

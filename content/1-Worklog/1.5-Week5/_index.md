@@ -1,57 +1,42 @@
 ---
 title: "Week 5 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-07-06
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
+
+{{% notice tip %}}
+Week 5 began the practical phase by setting up the project environment and preparing the movie dataset. The S3 layout and DynamoDB tables were then created and populated with the application's initial data.
 {{% /notice %}}
 
+## Week 5 Objectives
 
-### Week 5 Objectives:
+- Prepare the frontend, backend, and machine-learning environments.
+- Profile, clean, and normalize the movie dataset.
+- Organize datasets and model artifacts in Amazon S3.
+- Create five DynamoDB tables based on application access patterns.
+- Load and validate the initial movie and popularity data.
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+## Tasks Completed During the Week
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| Monday | - Initialize the repository and ML submodule.<br>- Install Python, Node.js, Docker, and AWS CLI.<br>- Prepare environment variables from the project template. | 06/07/2026 | 06/07/2026 | Project README and Notes |
+| Tuesday | - Profile movie, rating, link, credit, and keyword files.<br>- Check missing and duplicate values.<br>- Map MovieLens IDs to TMDB IDs. | 07/07/2026 | 07/07/2026 | Kaggle Dataset, Pandas Documentation |
+| Wednesday | - Create the project S3 bucket.<br>- Prepare raw, processed, training, inference, model, and evaluation prefixes.<br>- Enable Block Public Access and encryption. | 08/07/2026 | 08/07/2026 | Amazon S3 Documentation |
+| Thursday | - Create Movies, PopularMovies, Users, UserInteractions, and RecommendationCache.<br>- Verify their keys and table status. | 09/07/2026 | 09/07/2026 | Amazon DynamoDB Documentation |
+| Friday | - Load movie metadata and popularity data.<br>- Inspect sample records through the console and CLI.<br>- Correct missing required fields. | 10/07/2026 | 10/07/2026 | AWS CLI and Project Data Scripts |
 
+## Week 5 Achievements
 
-### Week 5 Achievements:
+By the end of Week 5, the data layer was ready to support application development and model training.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+Key achievements included:
 
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Prepared a working local development environment.
+- Cleaned the dataset and standardized movie identifiers.
+- Created the required S3 layout for data, models, and reports.
+- Created the five DynamoDB tables.
+- Loaded Movies and PopularMovies data.
+- Validated sample records and corrected simple formatting issues.

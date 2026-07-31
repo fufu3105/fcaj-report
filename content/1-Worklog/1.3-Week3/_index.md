@@ -1,57 +1,42 @@
 ---
 title: "Week 3 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-06-22
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
+
+{{% notice tip %}}
+Week 3 focused on the architecture of a React/Vite and FastAPI application. In addition to request flows and source-code organization, the week covered JWT authentication, Docker, CI/CD, caching, logging, and fallback behavior.
 {{% /notice %}}
 
+## Week 3 Objectives
 
-### Week 3 Objectives:
+- Understand client-server architecture and REST API design.
+- Learn the roles of React/Vite and FastAPI.
+- Understand router, service, and repository separation.
+- Study JWT authentication and secure secret handling.
+- Learn the basics of Docker, CI/CD, logging, caching, and fallback.
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+## Tasks Completed During the Week
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| Monday | - Study client-server architecture.<br>- Review HTTP methods, status codes, headers, and JSON.<br>- Learn REST API principles. | 22/06/2026 | 22/06/2026 | MDN Web Docs |
+| Tuesday | - Study React components, props, state, and hooks.<br>- Learn the Vite development and build process.<br>- Note how the frontend calls APIs. | 23/06/2026 | 23/06/2026 | React and Vite Documentation |
+| Wednesday | - Study FastAPI routers, request models, and dependencies.<br>- Learn the router-service-repository pattern.<br>- Trace a backend request. | 24/06/2026 | 24/06/2026 | FastAPI Documentation |
+| Thursday | - Study password hashing, JWTs, access tokens, and expiry.<br>- Learn CORS and protected routes.<br>- Review secure secret handling. | 25/06/2026 | 25/06/2026 | FastAPI Security, JWT Documentation |
+| Friday | - Study Docker images, containers, and Docker Compose.<br>- Learn basic GitHub Actions CI/CD.<br>- Study CloudWatch logging, caching, and fallback. | 26/06/2026 | 26/06/2026 | Docker and GitHub Actions Documentation |
 
+## Week 3 Achievements
 
-### Week 3 Achievements:
+By the end of Week 3, the full application structure and request flow were clear enough to begin implementation.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+Key achievements included:
 
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Understood how requests move from React through FastAPI to AWS services.
+- Learned the roles of components, state, and the frontend API client.
+- Understood router, service, and repository separation in the backend.
+- Learned the login, token issuance, and JWT validation flow.
+- Understood Docker Compose and CI/CD deployment basics.
+- Learned why logging, caching, and fallback improve reliability.

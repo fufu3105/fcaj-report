@@ -1,57 +1,42 @@
 ---
 title: "Week 8 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-07-27
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
+
+{{% notice tip %}}
+The final week focused on testing the main flows, reviewing access permissions, and monitoring system activity. The report, screenshots, limitations, and final evaluation were completed before unused AWS resources were cleaned up.
 {{% /notice %}}
 
+## Week 8 Objectives
 
-### Week 8 Objectives:
+- Test the three user scenarios and main interaction flows.
+- Verify caching, Endpoint invocation, and fallback.
+- Review IAM, logs, and cost alerts.
+- Complete documentation, screenshots, and evaluation.
+- Clean up AWS resources that could continue generating charges.
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+## Tasks Completed During the Week
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| Monday | - Test guest catalog and popularity flows.<br>- Test registration, login, and onboarding.<br>- Record UI and API issues. | 27/07/2026 | 27/07/2026 | Project Test Checklist |
+| Tuesday | - Test new-user and returning-user recommendations.<br>- Check cache hits, misses, and Endpoint fallback.<br>- Fix simple data issues. | 28/07/2026 | 28/07/2026 | Test Checklist and CloudWatch Logs |
+| Wednesday | - Review EC2 and SageMaker IAM roles.<br>- Check CloudWatch Logs and AWS Budgets.<br>- Remove unnecessary workshop permissions. | 29/07/2026 | 29/07/2026 | AWS IAM, CloudWatch, and Budgets Documentation |
+| Thursday | - Complete the workshop report and worklog.<br>- Organize screenshots, diagrams, and test evidence.<br>- Review links, wording, and formatting. | 30/07/2026 | 30/07/2026 | FCAJ Report Guideline and Project Notes |
+| Friday | - Export reports and artifacts that must be retained.<br>- Clean up SageMaker, EC2, DynamoDB, and S3 resources in dependency order.<br>- Review Billing. | 31/07/2026 | 31/07/2026 | AWS Resource Cleanup Checklist |
 
+## Week 8 Achievements
 
-### Week 8 Achievements:
+By the end of the final week, the system and report had been reviewed before the internship period concluded.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+Key achievements included:
 
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Tested guest, new-user, and returning-user flows.
+- Verified interactions, caching, Endpoint invocation, and fallback.
+- Reviewed IAM permissions, CloudWatch logs, and cost alerts.
+- Fixed small data, interface, and API configuration issues.
+- Completed the worklog, workshop documentation, screenshots, and evaluation.
+- Retained required reports and cleaned up unused AWS resources.

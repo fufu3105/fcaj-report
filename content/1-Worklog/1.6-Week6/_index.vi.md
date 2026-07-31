@@ -1,58 +1,42 @@
 ---
 title: "Worklog Tuần 6"
-date: 2024-01-01
-weight: 1
+date: 2026-07-13
+weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
+
+{{% notice tip %}}
+Tuần 6 tập trung xây dựng ứng dụng web xem phim bằng React/Vite và FastAPI. Các luồng đăng ký, đăng nhập, onboarding, xem danh mục phim và ghi nhận hành vi người dùng được hoàn thiện trước khi đóng gói bằng Docker và chạy thử trên EC2.
 {{% /notice %}}
 
+## Mục tiêu tuần 6
 
-### Mục tiêu tuần 6:
+- Xây dựng giao diện danh mục và trang thông tin phim.
+- Tạo cấu trúc backend FastAPI và các API chính.
+- Hoàn thiện đăng ký, đăng nhập và onboarding.
+- Ghi nhận các tương tác của người dùng vào DynamoDB.
+- Chạy ứng dụng bằng Docker Compose trên EC2.
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+## Các công việc triển khai trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tạo layout, thanh điều hướng và movie card.<br>- Xây dựng trang danh mục và trang chi tiết phim.<br>- Tạo API client dùng chung ở frontend. | 13/07/2026 | 13/07/2026 | React và Vite Documentation |
+| 3 | - Tạo cấu trúc router, service và repository FastAPI.<br>- Xây dựng API lấy danh sách phim, phim phổ biến và chi tiết phim.<br>- Kết nối backend với DynamoDB. | 14/07/2026 | 14/07/2026 | FastAPI, Boto3 Documentation |
+| 4 | - Xây dựng API đăng ký và đăng nhập.<br>- Hash mật khẩu và phát hành JWT.<br>- Xây dựng màn hình onboarding chọn thể loại yêu thích. | 15/07/2026 | 15/07/2026 | FastAPI Security Documentation |
+| 5 | - Ghi nhận sự kiện click, watch, rate, reaction và share.<br>- Kiểm tra dữ liệu trong UserInteractions.<br>- Sửa lỗi validate request đơn giản. | 16/07/2026 | 16/07/2026 | Boto3, DynamoDB Documentation |
+| 6 | - Tạo Docker image cho frontend và backend.<br>- Chạy hệ thống bằng Docker Compose trên EC2.<br>- Cấu hình Security Group và kiểm tra ứng dụng bằng trình duyệt. | 17/07/2026 | 17/07/2026 | Docker và Amazon EC2 Documentation |
 
+## Kết quả đạt được tuần 6
 
-### Kết quả đạt được tuần 6:
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+Sau tuần 6, ứng dụng web cơ bản đã hoạt động và có thể lưu dữ liệu người dùng trên DynamoDB.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+Một số kết quả đạt được gồm:
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Hoàn thành giao diện danh mục, movie card và trang chi tiết phim.
+- Xây dựng các API đọc dữ liệu phim từ DynamoDB.
+- Hoàn thành đăng ký, đăng nhập, JWT và onboarding.
+- Ghi nhận được các hành vi chính của người dùng.
+- Đóng gói frontend và backend bằng Docker.
+- Chạy được ứng dụng trên EC2 và sửa các lỗi cấu hình ban đầu.

@@ -1,57 +1,42 @@
 ---
 title: "Week 2 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-06-15
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
+
+{{% notice tip %}}
+Week 2 focused on the purpose and interaction of the AWS services selected for the movie recommendation system. Study topics covered security, networking, compute, storage, databases, machine learning, monitoring, and budgeting.
 {{% /notice %}}
 
+## Week 2 Objectives
 
-### Week 2 Objectives:
+- Understand IAM identity and permission management.
+- Learn the basic networking components of a VPC.
+- Understand how EC2 hosts an application.
+- Distinguish the purposes of Amazon S3 and DynamoDB.
+- Understand the roles of SageMaker, CloudWatch, and AWS Budgets.
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+## Tasks Completed During the Week
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| Monday | - Study IAM users, groups, roles, and policies.<br>- Compare authentication and authorization.<br>- Learn least privilege and MFA. | 15/06/2026 | 15/06/2026 | AWS IAM Documentation |
+| Tuesday | - Study VPCs, subnets, route tables, and Internet Gateways.<br>- Compare Security Groups and Network ACLs.<br>- Trace a request from the Internet to EC2. | 16/06/2026 | 16/06/2026 | Amazon VPC Documentation |
+| Wednesday | - Study EC2 instances, AMIs, EBS, key pairs, and Elastic IPs.<br>- Compare basic instance types.<br>- Learn the purpose of instance profiles. | 17/06/2026 | 17/06/2026 | Amazon EC2 Documentation |
+| Thursday | - Study S3 buckets, objects, prefixes, versioning, and encryption.<br>- Study DynamoDB keys and access patterns.<br>- Compare the two storage services. | 18/06/2026 | 18/06/2026 | Amazon S3 and DynamoDB Documentation |
+| Friday | - Study SageMaker Processing Jobs and real-time Endpoints.<br>- Learn CloudWatch logs, metrics, and alarms.<br>- Learn AWS Budgets notifications. | 19/06/2026 | 19/06/2026 | Amazon SageMaker, CloudWatch, and AWS Budgets Documentation |
 
+## Week 2 Achievements
 
-### Week 2 Achievements:
+By the end of Week 2, the purpose of each AWS service in the planned architecture was understood.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+Key achievements included:
 
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Understood IAM users, roles, and permission policies.
+- Learned the networking components required for an Internet-facing EC2 application.
+- Understood the main components used to create and access an EC2 instance.
+- Distinguished S3 object storage from DynamoDB request-time data storage.
+- Distinguished batch model processing from real-time endpoint inference.
+- Understood the monitoring and cost-control roles of CloudWatch and AWS Budgets.
