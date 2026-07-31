@@ -6,111 +6,184 @@ chapter: false
 pre: " <b> 3.1. </b> "
 ---
 
-# AMAZON ATHENA - ANALYZING DATA ON S3 USING SQL WITHOUT CREATING A DATABASE
+# EXPLORING AWS RESOURCE EXPLORER – FIND AWS RESOURCES ACROSS MULTIPLE REGIONS FROM A SINGLE PLACE
 
-While learning AWS, I often thought that querying data required installing a database management system like MySQL or PostgreSQL. However, when exploring **Amazon Athena**, I realized there is a simpler way in some cases.
+While using the AWS Console, I noticed a fairly simple yet time-consuming issue: not remembering which Region a resource was created in.
 
-Amazon Athena is a serverless service that allows you to query data stored on Amazon S3 using familiar SQL syntax. This means I don't need to create a server, install a database, or manage infrastructure to analyze data directly. Athena uses the open-source Trino query engine and supports various data formats such as CSV, JSON, Parquet, ORC, and Avro.
+For example, I know the account has an EC2 instance or a DynamoDB table, but when I open the service, I don't see it. After checking for a while, I discover that the resource was created in a different Region.
 
-## What can Amazon Athena be used for?
+AWS has a service to help solve this problem: **AWS Resource Explorer**. This service allows searching for resources in an AWS account based on name, ID, Region, resource type, and tags. The usage is quite similar to a search engine dedicated to AWS resources.
 
-After researching, I found that Athena is suitable for quite a few scenarios, such as:
+## What is AWS Resource Explorer used for?
 
-- Analyzing CSV or JSON files stored on S3.
-- Querying logs from CloudTrail, VPC Flow Logs, or Application Logs.
-- Analyzing data for reporting purposes.
-- Supporting the building of a Data Lake in combination with Amazon S3.
-- Acting as a data source for Amazon QuickSight to visualize data.
+In an AWS account, resources can be scattered across multiple places, such as:
+
+- EC2 instance in Singapore.
+- DynamoDB table in Tokyo.
+- Lambda function in North Virginia.
+- S3 bucket with global scope.
+- Some experimental resources created previously but not yet deleted.
+
+Instead of switching between each Region and opening each service one by one to check, Resource Explorer allows searching for these resources from a unified interface.
+
+{{% notice note %}}
+Resource Explorer maintains indexes containing information about resources in each Region. When configuring a Region as an aggregator index, users can search for resources from multiple Regions in one place.
+{{% /notice %}}
+
+## Practical Steps
+
+In this practical exercise, we will try to find EC2 and S3 resources, as well as resources that have not been tagged.
+
+**Step 1:** Access AWS Resource Explorer.
+
+Log in to the AWS Management Console and search for: AWS Resource Explorer
+
+Then select Resource search.
+
+AWS currently allows users with appropriate permissions to start searching right away when accessing the service. With the `AWSResourceExplorerReadOnlyAccess` policy, users can receive initial search results. To have a complete inventory and automatically create necessary components, the account needs additional `iam:CreateServiceLinkedRole` permissions, which are included in the `AWSResourceExplorerFullAccess` policy.
+
+**Step 2:** Try finding all EC2 resources.
+
+In the search box, enter:
+
+```text
+service:ec2
+```
+
+This query returns resources managed by Amazon EC2 that Resource Explorer has indexed.
+If you only want to find EC2 instances, you can use a more specific query:
+
+```text
+resourcetype:ec2:instance
+```
+
+Resource Explorer supports filters such as `service`, `resourcetype`, `region`, `tag`, and various other metadata types.
+
+**Step 3:** Find resources in a Region.
+
+To find resources in the Singapore Region, enter:
+
+```text
+region:ap-southeast-1
+```
+
+You can combine multiple conditions:
+
+```text
+service:ec2 region:ap-southeast-1
+```
+
+The above query only searches for resources belonging to EC2 in the Singapore Region.
 
 {{% notice tip %}}
-What I find interesting is that as long as the data is on S3, you can use SQL to query it without needing to import it into a database first.
+When using multiple filters, Resource Explorer combines them to narrow down search results. This is quite convenient when an account has many different types of resources.
 {{% /notice %}}
 
-## Querying data with Amazon Athena
+**Step 4:** Find resources by tag.
 
-To understand it better, I followed a simple example with a CSV file stored on S3.
+Suppose production resources are tagged:
 
-**Step 1:** Create an S3 Bucket and upload the `students.csv` data file. The content includes columns like:
-- id
-- name
-- major
-- gpa
-
-**Step 2:** Access the AWS Console and open Amazon Athena.
-
-On the first use, Athena will ask you to configure an S3 Bucket to store the query results.
-
-**Step 3:** Create a Database.
-
-```sql
-CREATE DATABASE university;
+```text
+Environment=Production
 ```
 
-**Step 4:** Create an external table referencing the file on S3.
+You can search using the query:
 
-```sql
-CREATE EXTERNAL TABLE students (
-    id INT,
-    name STRING,
-    major STRING,
-    gpa DOUBLE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-LOCATION 's3://your-bucket/students/';
+```text
+tag:Environment=Production
 ```
+
+Or combine it with the service type:
+
+```text
+service:ec2 tag:Environment=Production
+```
+
+To search by tag, the view being used must be configured to include the `tags` attribute. The default view created during full setup typically supports this search.
+
+**Step 5:** Find untagged resources
+One query I found quite useful is:
+
+```text
+tag:none
+```
+
+This query returns resources that do not have user-created tags.
+
+In practice, finding untagged resources helps review resources that have not been classified by project, environment, or owner. This can also be the first step before reviewing costs or cleaning up test resources.
+
+You can limit the results to a specific Region:
+
+```text
+tag:none region:ap-southeast-1
+```
+
+**Step 6:** Enable multi-Region search
+
+If cross-Region search is not yet enabled for the account, go to: AWS Resource Explorer → Settings
+
+Select **Complete setup and enable cross-Region search**. Next:
+
+1. Choose a Region as the aggregator index, such as Singapore.
+2. Select **Enable cross-Region search in all Regions**.
+3. Confirm the setup.
+4. Monitor the indexing status.
+5. Once completed, return to Resource search and select the view belonging to the aggregator Region.
+
+AWS will create indexes in the selected regions, convert the main region's index into an aggregator index, and create a default view to search for resources across those regions.
 
 {{% notice note %}}
-Athena only creates metadata; the data remains on S3 and is not copied elsewhere.
+Note that indexing does not always complete immediately. According to AWS documentation, tagged resources usually appear after a few minutes, while untagged resources may take longer. Initial synchronization to the aggregator index may also have some latency.
 {{% /notice %}}
 
-**Step 5:** Execute a query.
+## What I find useful
 
-```sql
-SELECT name, gpa
-FROM students
-WHERE gpa >= 3.5;
-```
+The most useful aspect of Resource Explorer is not having to remember exactly which Region a resource is located in.
 
-{{% notice note %}}
-After a few seconds, the results will be displayed directly on the Athena interface.
-{{% /notice %}}
+This service also supports searching by multiple types of metadata. For example, instead of just searching by resource name, users can search by service, resource type, Region, or tag.
 
-## Advantages
+Resource Explorer is also integrated with the Unified Search bar on the AWS Management Console. Therefore, in some cases, you can search for resources directly in the top search bar of the Console without opening Resource Explorer separately.
 
-After researching, I found that Amazon Athena has quite a few advantages.
+Another point is that Resource Explorer supports using views to control the scope of resources that individual users are allowed to find. For example, a view can be set to only display resources tagged with `Environment=Production`, and then access to that view can be granted only to the appropriate operations team.
 
-First, there is no need to install or manage database servers. This makes starting data analysis much faster.
+## Some limitations to keep in mind
 
-Second, Athena supports many different data formats. If the data is stored in formats like Parquet or ORC, query performance will also be better.
+Resource Explorer is a resource search and discovery tool, not a full resource management tool. After finding an EC2 instance or DynamoDB table, users usually still need to open the management page of the respective service to change configurations.
 
-Additionally, Athena integrates well with many AWS services like AWS Glue Data Catalog, Amazon QuickSight, and Amazon S3, making it suitable for building data analytics systems.
+Search results also depend on IAM permissions, views, and indexing status. Therefore, the fact that a resource does not appear does not necessarily mean that the resource does not exist.
 
-## Some points to note
+With basic read-only permissions, users may only receive partial results. If you want a complete inventory or want to search across multiple regions, additional setup and appropriate permissions are required.
 
-Besides the advantages above, I also noticed some things to consider. Athena charges based on the amount of data scanned in each query. Therefore, if the data is not optimized or if you use `SELECT *` on very large files, costs can increase.
+Additionally, when using free-form keywords, the Search operation has a limit on the number of results returned. If an account has a large number of resources, you should use additional filters such as Region, service, or resource type to narrow down the results.
 
-According to AWS documentation, to reduce costs and improve performance, you should:
-- Use columnar formats like Parquet or ORC.
-- Partition the data.
-- Only query the necessary columns instead of retrieving all the data.
+## Cost
 
-## When to use it?
+According to AWS pricing, Resource Explorer is provided without additional usage fees and has no initial setup fees.
 
-In my opinion, Amazon Athena is suitable when:
-
-- You want to analyze data stored on Amazon S3.
-- You need to quickly inspect CSV or JSON files.
-- Analyzing system logs.
-- Building a Data Lake without wanting to operate a separate database.
-- Combining with QuickSight to create dashboards.
+However, some features displayed in Resource Explorer may depend on other services such as AWS Config. Related services may still charge separately. Some List or Describe APIs of services called may also incur charges if those services apply pricing to these APIs.
 
 ## Conclusion
 
-After exploring, I found that Amazon Athena is a very convenient service for data analysis problems. With just Amazon S3 and a few SQL commands, I was able to query data without deploying an additional database management system. I think this is a service worth trying if you are learning about Data Analytics or working on projects that require data processing on AWS.
+After trying AWS Resource Explorer, I found it to be a fairly simple yet useful service, especially when an account has resources spread across multiple regions.
+
+This service does not directly optimize costs or system security, but it helps users get a clearer picture of existing resources. As a result, checking test resources, finding missing tags, or locating a resource becomes faster.
+
+For learning accounts, Resource Explorer can also help check whether you accidentally left resources behind in another region after completing a lab.
+
+Has anyone ever encountered the situation where they couldn't find a resource just because they selected the wrong Region? I'd love to hear more real-world use cases of Resource Explorer.
 
 ## References
-1. [AWS Documentation – Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html)
-2. [Getting Started with Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/getting-started.html)
-3. [Amazon Athena User Guide](https://docs.aws.amazon.com/athena/latest/ug/)
-4. [Amazon Athena Pricing](https://aws.amazon.com/athena/pricing/)
+
+1. [AWS Resource Explorer User Guide:](https://docs.aws.amazon.com/.../userguide/welcome.html)
+
+2. [Getting started with Resource Explorer:](https://docs.aws.amazon.com/resource-explorer/latest/userguide/getting-started.html)
+
+3. [Searching for resources:](https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search.html)
+
+4. [Resource Explorer query syntax:](https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query-syntax.html)
+
+5. [Search query examples:](https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query-examples.html)
+
+6. [Setting up cross-Region search:](https://docs.aws.amazon.com/resource-explorer/latest/userguide/getting-started-setting-up.html)
+
+7. [AWS Resource Explorer Pricing:](https://aws.amazon.com/resourceexplorer/pricing/)

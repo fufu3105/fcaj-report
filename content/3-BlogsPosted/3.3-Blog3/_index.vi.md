@@ -1,99 +1,116 @@
 ---
 title: "Blog 3"
 date: 2026-07-29
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-# TÌM HIỂU AMAZON SIMPLE EMAIL SERVICE (AMAZON SES) – DỊCH VỤ GỬI EMAIL TRÊN AWS
+# TÌM HIỂU AMAZON DATA LIFECYCLE MANAGER (DLM) – TỰ ĐỘNG QUẢN LÝ EBS SNAPSHOT
 
-Trong quá trình tìm hiểu các dịch vụ của AWS, mình có dịp đọc về Amazon Simple Email Service (Amazon SES). Ban đầu mình chỉ nghĩ nếu muốn gửi email từ ứng dụng thì có thể dùng Gmail SMTP hoặc một số dịch vụ như SendGrid. Tuy nhiên, khi tìm hiểu thêm thì mình biết AWS cũng có một dịch vụ chuyên cho việc gửi và nhận email với tên gọi là Amazon SES.
+Trong quá trình học AWS, mình thường tạo EBS Snapshot để sao lưu dữ liệu của EC2 trước khi thực hiện các thay đổi quan trọng. Tuy nhiên, nếu phải tự tạo snapshot mỗi ngày hoặc tự xóa các bản snapshot cũ thì sẽ khá mất thời gian, đặc biệt khi số lượng EC2 ngày càng nhiều.
 
-Theo tài liệu của AWS, SES được thiết kế để hỗ trợ các ứng dụng gửi email với quy mô từ nhỏ đến lớn. Một số trường hợp phổ biến có thể kể đến như gửi email xác thực tài khoản, OTP, thông báo đơn hàng, email marketing hoặc newsletter.
+Khi tìm hiểu thêm, mình biết đến Amazon Data Lifecycle Manager (Amazon DLM). Đây là một service giúp tự động hóa việc tạo, lưu trữ và xóa Amazon EBS Snapshots theo các chính sách được cấu hình trước.
 
-Điều mình thấy thú vị là SES không chỉ hỗ trợ giao thức SMTP mà còn cung cấp API để tích hợp trực tiếp vào ứng dụng.
+Theo tài liệu của AWS, DLM giúp giảm thao tác thủ công và đảm bảo các bản backup luôn được tạo đúng lịch.
 
-## Một ví dụ đơn giản
+## Amazon DLM hoạt động như thế nào?
 
-Để hiểu rõ hơn, mình thử tìm hiểu quy trình gửi email bằng Amazon SES.
+Ý tưởng của DLM khá đơn giản.
 
-**Bước 1:** Truy cập AWS Console và tìm Amazon SES.
+Thay vì chọn từng EBS Volume để tạo snapshot, mình chỉ cần xây dựng một Lifecycle Policy. Chính sách này sẽ quy định:
+- Tài nguyên nào cần backup.
+- Backup vào thời gian nào.
+- Giữ lại bao nhiêu bản snapshot.
+- Khi nào tự động xóa snapshot cũ.
 
-**Bước 2:** Chọn Region mà SES hỗ trợ.
+Ví dụ, mình có thể cấu hình để AWS:
+- Tạo snapshot lúc 1:00 AM mỗi ngày.
+- Chỉ giữ lại 7 bản snapshot gần nhất.
+- Tự động xóa các snapshot cũ hơn.
 
-{{% notice note %}}
-Lưu ý rằng không phải Region nào cũng hỗ trợ đầy đủ các tính năng của SES.
-{{% /notice %}}
+Nhờ đó, mình không cần nhớ lịch backup hay dọn dẹp snapshot thủ công nữa.
 
-**Bước 3:** Xác minh địa chỉ email.
+## Thử tạo một Lifecycle Policy
 
-Trong môi trường Sandbox, AWS yêu cầu xác minh email gửi và email nhận.
+Để hiểu rõ hơn, mình thử tạo một chính sách backup cho EBS Volume.
 
-Chỉ cần nhập địa chỉ email, AWS sẽ gửi một email xác nhận. Sau khi nhấn vào liên kết xác minh thì email sẽ được kích hoạt.
+**Bước 1:** Truy cập AWS Console và tìm Amazon Data Lifecycle Manager.
 
-**Bước 4:** Thử gửi email.
+**Bước 2:** Chọn Create lifecycle policy.
 
-Có thể chọn mục Test Email ngay trên AWS Console hoặc sử dụng SMTP/API để gửi từ ứng dụng.
+**Bước 3:** Chọn loại tài nguyên.
 
-Ví dụ nội dung email:
+Trong ví dụ này mình chọn:
 
 ```text
-Subject: Welcome
-Body: Welcome to our application.
+EBS Snapshot Policy
 ```
 
-**Bước 5:** Kiểm tra hộp thư nhận.
+**Bước 4:** Chọn tài nguyên cần backup.
 
-Nếu mọi thứ được cấu hình đúng, email sẽ được gửi đến địa chỉ đã xác minh.
+Có thể chọn thông qua Tags. Ví dụ:
 
-## Một vài điểm mình thấy hữu ích
+```text
+Environment = Production
+```
 
-Sau khi tìm hiểu, mình thấy Amazon SES có một số ưu điểm như:
+Khi đó, tất cả các EBS Volume có tag này sẽ tự động được áp dụng chính sách backup.
 
-- Dễ tích hợp thông qua SMTP hoặc AWS SDK.
-- Có khả năng gửi số lượng email lớn khi ứng dụng phát triển.
-- Theo dõi được tỷ lệ gửi thành công, bounce và complaint.
-- Chi phí tương đối thấp so với nhiều dịch vụ gửi email khác.
-- Có thể kết hợp với Lambda, SNS hoặc EventBridge để xây dựng quy trình xử lý email tự động.
+**Bước 5:** Thiết lập lịch chạy.
+
+Ví dụ:
+- Chạy mỗi ngày.
+- Thời gian: 01:00 UTC.
+
+**Bước 6:** Thiết lập Retention Rule.
+
+Ví dụ:
+- Giữ lại 7 snapshot gần nhất.
+
+AWS sẽ tự động xóa những snapshot vượt quá giới hạn này.
+
+**Bước 7:** Kiểm tra và tạo Policy.
+
+Sau khi hoàn tất, DLM sẽ tự động thực hiện việc backup theo đúng lịch đã cấu hình.
 
 {{% notice tip %}}
-Theo mình, đây là một service khá phù hợp nếu đang xây dựng các ứng dụng web hoặc mobile cần gửi email cho người dùng.
+Việc sử dụng Tags để áp dụng chính sách là một điểm khá hay vì khi có thêm EC2 mới, chỉ cần gắn đúng Tag là sẽ tự động được backup.
 {{% /notice %}}
+
+## Những điểm mình thấy hữu ích
+
+Sau khi tìm hiểu, mình thấy Amazon DLM có một số ưu điểm như:
+- Tự động tạo EBS Snapshot theo lịch.
+- Tự động xóa snapshot cũ để tránh lãng phí dung lượng lưu trữ.
+- Có thể áp dụng cho nhiều tài nguyên thông qua Tags.
+- Không cần tự viết script hoặc sử dụng cron job.
+- Giúp chuẩn hóa quy trình backup trong các dự án.
 
 ## Một số điểm cần lưu ý
 
-Bên cạnh những ưu điểm trên thì cũng có một số điều mình thấy cần quan tâm.
-
-Khi mới tạo tài khoản, SES sẽ hoạt động ở Sandbox Mode. Điều này có nghĩa là chỉ có thể gửi email đến những địa chỉ đã được xác minh trước.
-
-Nếu muốn gửi email đến người dùng thực tế thì cần gửi yêu cầu lên AWS để chuyển sang Production Access.
-
-Ngoài ra, nếu nội dung email không được thiết kế hợp lý hoặc gửi quá nhiều email trong thời gian ngắn thì vẫn có khả năng bị đánh dấu là spam giống như các nền tảng gửi email khác.
+Bên cạnh những ưu điểm trên, mình cũng thấy có một vài điều cần cân nhắc:
+- Amazon DLM chủ yếu phục vụ việc quản lý Amazon EBS Snapshots, nên nếu muốn sao lưu nhiều dịch vụ khác như RDS, DynamoDB hoặc EFS thì AWS Backup sẽ phù hợp hơn.
+- Ngoài ra, mặc dù DLM giúp tự động xóa snapshot cũ, nhưng người dùng vẫn cần xây dựng chính sách retention hợp lý. Nếu giữ snapshot quá lâu hoặc tạo quá thường xuyên thì chi phí lưu trữ vẫn sẽ tăng theo thời gian.
 
 ## Khi nào nên sử dụng?
 
-Theo mình, Amazon SES sẽ phù hợp với các trường hợp như:
-
-- Gửi email xác thực tài khoản.
-- Gửi mã OTP.
-- Quên mật khẩu (Forgot Password).
-- Gửi hóa đơn hoặc thông báo đơn hàng.
-- Gửi email định kỳ cho khách hàng.
-- Gửi thông báo từ hệ thống.
-
-Đây đều là những tính năng khá phổ biến trong hầu hết các ứng dụng hiện nay.
+Theo mình, Amazon DLM sẽ phù hợp khi:
+- Có nhiều EC2 sử dụng EBS Volume.
+- Muốn backup EBS định kỳ mà không cần thao tác thủ công.
+- Muốn quản lý snapshot theo chính sách thống nhất.
+- Muốn giảm chi phí bằng cách tự động xóa snapshot cũ.
 
 ## Kết luận
 
-Sau khi tìm hiểu, mình thấy Amazon SES là một dịch vụ khá hữu ích nhưng thường ít được nhắc đến khi mới bắt đầu học AWS. Việc tích hợp không quá phức tạp, chi phí hợp lý và có thể mở rộng khi hệ thống có nhiều người dùng hơn.
-
-Mình nghĩ đây là một service đáng để thử nếu sau này xây dựng các dự án có chức năng gửi email, thay vì phải tự thiết lập mail server hoặc phụ thuộc hoàn toàn vào SMTP của Gmail.
-
-Nếu anh/chị hoặc các bạn đã từng sử dụng Amazon SES trong thực tế thì rất mong được nghe thêm kinh nghiệm hoặc những lưu ý khi triển khai để cùng học hỏi.
+Sau khi tìm hiểu, mình thấy Amazon Data Lifecycle Manager là một service khá đơn giản nhưng rất hữu ích trong việc tự động hóa quy trình sao lưu EBS. Thay vì phải nhớ tạo snapshot hoặc dọn dẹp thủ công, chỉ cần thiết lập một Lifecycle Policy là AWS sẽ thực hiện toàn bộ phần còn lại. Đây là một service mình nghĩ khá phù hợp với những ai đang quản lý nhiều EC2 hoặc muốn xây dựng quy trình backup tự động ngay từ đầu.
 
 ## Tài liệu tham khảo
-1. [AWS Documentation – Amazon Simple Email Service (SES)](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html)
-2. [Getting Started with Amazon SES](https://docs.aws.amazon.com/.../dg/getting-started.html)
-3. [Amazon SES Pricing](https://aws.amazon.com/ses/pricing/)
-4. [AWS Messaging Blog – Amazon SES](https://aws.amazon.com/blogs/messaging-and-targeting/)
+
+1. [AWS Documentation – Amazon Data Lifecycle Manager:](https://docs.aws.amazon.com/.../snapshot-lifecycle.html)
+
+2. [Automate Amazon EBS Snapshots with Data Lifecycle Manager:](https://docs.aws.amazon.com/.../snapshot-ami-policy.html)
+
+3. [Amazon EBS Snapshots Documentation:](https://docs.aws.amazon.com/.../use.../ebs-snapshots.html)
+
+4. [Amazon EBS Pricing (Snapshots):](https://aws.amazon.com/ebs/pricing/)

@@ -6,94 +6,97 @@ chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-# EXPLORING AMAZON SIMPLE EMAIL SERVICE (AMAZON SES) – AWS EMAIL SENDING SERVICE
+# UNDERSTANDING AWS RESOURCE EXPLORER – SEARCHING AWS RESOURCES MORE EASILY
 
-While learning about AWS services, I had the opportunity to read about Amazon Simple Email Service (Amazon SES). Initially, I thought that if I wanted to send emails from an application, I could use Gmail SMTP or a service like SendGrid. However, upon further research, I learned that AWS also has a dedicated service for sending and receiving emails called Amazon SES.
+While learning AWS, I realized that as the number of services and resources increases, managing them becomes more difficult. There are times when I remember creating a Lambda Function or an EC2 Instance but cannot remember exactly which Region it is in or what its full name is.
 
-According to AWS documentation, SES is designed to support applications sending emails on a scale from small to large. Some common use cases include sending account verification emails, OTPs, order notifications, email marketing, or newsletters.
+After researching AWS documentation, I learned about AWS Resource Explorer. This is a service that allows you to search for resources on AWS through a unified interface, instead of having to open each service to find them. Resource Explorer can index resources in the account and supports searching by name, resource type, or Region.
 
-What I found interesting is that SES not only supports the SMTP protocol but also provides APIs to integrate directly into applications.
+## What can AWS Resource Explorer do?
 
-## A Simple Example
+After reading the documentation and trying it out, I found that Resource Explorer supports quite a few practical use cases such as:
 
-To better understand, I tried exploring the process of sending emails using Amazon SES.
-
-**Step 1:** Access the AWS Console and search for Amazon SES.
-
-**Step 2:** Choose the Region supported by SES.
+- Quickly finding an EC2 Instance, S3 Bucket, Lambda Function, or DynamoDB Table.
+- Searching for resources by Region.
+- Searching for resources by name or ARN.
+- Checking whether a resource has been deleted or still exists.
+- Supporting management when an account has multiple Regions or multiple projects.
 
 {{% notice note %}}
-Note that not all Regions fully support all features of SES.
+This service is especially useful when you start having multiple environments like Development, Testing, and Production.
 {{% /notice %}}
 
-**Step 3:** Verify your email address.
+## Trying out AWS Resource Explorer
 
-In the Sandbox environment, AWS requires verifying both the sender and recipient email addresses.
+To understand it better, I tried configuring it according to AWS's instructions.
 
-Just enter the email address, and AWS will send a confirmation email. After clicking the verification link, the email will be activated.
+**Step 1:** Access the AWS Console and search for AWS Resource Explorer.
 
-**Step 4:** Try sending an email.
+**Step 2:** Select Create Index.
 
-You can select the Test Email option directly in the AWS Console or use SMTP/API to send from your application.
+The Index helps AWS collect information about the resources in your account. It usually takes just a few minutes to complete.
 
-Ví dụ nội dung email:
+**Step 3:** Create a Default View.
+
+The View determines the scope of resources that can be searched. It can be limited by Region or allow searching across multiple Regions.
+
+**Step 4:** Start searching.
+
+For example, I enter:
 
 ```text
-Subject: Welcome
-Body: Welcome to our application.
+resourcetype:ec2:instance
 ```
 
-**Step 5:** Check your inbox.
+to display all EC2 Instances.
 
-If everything is configured correctly, the email will be delivered to the verified address.
+Or search by name:
 
-## A Few Useful Points
+```text
+movie-api
+```
 
-After exploring, I found that Amazon SES has several advantages, such as:
+AWS will return resources with matching names or metadata.
 
-- Easy integration via SMTP or AWS SDK.
-- Ability to send large volumes of emails as the application grows.
-- Tracking success rates, bounces, and complaints.
-- Relatively low cost compared to many other email sending services.
-- Can be integrated with Lambda, SNS, or EventBridge to build automated email processing workflows.
+## Advantages
+
+After trying it out, I noticed Resource Explorer has several advantages:
+
+- No need to open each service to find a resource.
+- Supports searching across multiple Regions.
+- Simple and easy-to-use interface.
+- Can search using various different conditions.
+- Suitable as the number of resources increases.
 
 {{% notice tip %}}
-In my opinion, this is a quite suitable service if you are building web or mobile applications that need to send emails to users.
+In my opinion, if you are just learning AWS, you might not clearly feel the benefits yet. But when deploying multiple projects or managing a shared AWS account for multiple teams, searching for resources will be much faster.
 {{% /notice %}}
 
-## Points to Keep in Mind
+## Some points to note
 
-Besides the above advantages, there are also a few things I found important to consider.
+Besides the advantages above, I also found a few things to keep in mind.
 
-When first creating an account, SES operates in Sandbox Mode. This means you can only send emails to pre-verified addresses.
+First of all, Resource Explorer needs to have an Index created before use. If there is no Index, you cannot search for resources. Additionally, search results depend on the user's IAM permissions. If an IAM User or IAM Role does not have permission to view a certain resource, Resource Explorer will not display that resource either.
 
-If you want to send emails to real users, you need to submit a request to AWS to move to Production Access.
+{{% notice note %}}
+This is a tool to support searching and managing resources; it does not replace management or monitoring services like AWS Config or CloudWatch.
+{{% /notice %}}
 
-Additionally, if the email content is not properly designed or if too many emails are sent in a short period, there is still a risk of being marked as spam, just like on other email platforms.
+## When to use it?
 
-## When Should You Use It?
+In my opinion, Resource Explorer is suitable when:
 
-In my opinion, Amazon SES is suitable for use cases such as:
-
-- Sending account verification emails.
-- Sending OTP codes.
-- Password recovery (Forgot Password).
-- Sending invoices or order notifications.
-- Sending periodic customer newsletters.
-- Sending system notifications.
-
-These are quite common features in almost all modern applications.
+- Managing multiple AWS services within the same account.
+- Working with multiple Regions.
+- Wanting to quickly find a resource without remembering its exact location.
+- Checking if resources still exist before cleaning up or optimizing costs.
 
 ## Conclusion
+After exploring, I found that AWS Resource Explorer is a fairly simple service but very useful in the process of managing resources on AWS. Instead of having to open each service and search manually, just a single interface is enough to look up most of the resources in the account.
 
-After exploring, I found that Amazon SES is a very useful service, though it is often overlooked when starting to learn AWS. Integration is not overly complex, costs are reasonable, and it can scale as the system grows to more users.
-
-I think this is a service worth trying if you build projects with email functionality in the future, instead of having to set up your own mail server or rely entirely on Gmail SMTP.
-
-If any of you have used Amazon SES in practice, I would love to hear your experiences or deployment tips to learn together.
+I think this is a service worth trying, especially when the number of resources starts to increase or when working on projects with multiple environments and Regions.
 
 ## References
-1. [AWS Documentation – Amazon Simple Email Service (SES)](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html)
-2. [Getting Started with Amazon SES](https://docs.aws.amazon.com/.../dg/getting-started.html)
-3. [Amazon SES Pricing](https://aws.amazon.com/ses/pricing/)
-4. [AWS Messaging Blog – Amazon SES](https://aws.amazon.com/blogs/messaging-and-targeting/)
+1. [AWS Documentation – AWS Resource Explorer](https://docs.aws.amazon.com/resource-explorer/latest/userguide/welcome.html)
+2. [Getting Started with AWS Resource Explorer](https://docs.aws.amazon.com/resource-explorer/latest/userguide/getting-started.html)
+3. [Search syntax for AWS Resource Explorer](https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query.html)

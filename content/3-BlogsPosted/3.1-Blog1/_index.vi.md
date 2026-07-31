@@ -6,111 +6,184 @@ chapter: false
 pre: " <b> 3.1. </b> "
 ---
 
-# AMAZON ATHENA - PHÂN TÍCH DỮ LIỆU TRÊN S3 BẰNG SQL MÀ KHÔNG CẦN TẠO DATABASE
+# TÌM HIỂU AWS RESOURCE EXPLORER – TÌM TÀI NGUYÊN AWS TRÊN NHIỀU REGION TỪ MỘT NƠI
 
-Trong quá trình học AWS, mình thường nghĩ rằng muốn truy vấn dữ liệu thì cần phải cài đặt một hệ quản trị cơ sở dữ liệu như MySQL hay PostgreSQL. Tuy nhiên, khi tìm hiểu về **Amazon Athena**, mình nhận ra có một cách đơn giản hơn trong một số trường hợp.
+Trong quá trình sử dụng AWS Console, mình nhận thấy một vấn đề khá đơn giản nhưng dễ gây mất thời gian: không nhớ tài nguyên đã được tạo ở Region nào.
 
-Amazon Athena là dịch vụ serverless cho phép truy vấn dữ liệu lưu trên Amazon S3 bằng cú pháp SQL quen thuộc. Điều này có nghĩa là mình không cần tạo máy chủ, cài đặt database hay quản lý hạ tầng mà vẫn có thể phân tích dữ liệu trực tiếp. Athena sử dụng công cụ truy vấn mã nguồn mở Trino, hỗ trợ nhiều định dạng dữ liệu như CSV, JSON, Parquet, ORC và Avro.
+Ví dụ, mình biết tài khoản đang có một EC2 instance hoặc DynamoDB table, nhưng khi mở service lại không thấy. Sau một lúc kiểm tra mới phát hiện tài nguyên đó được tạo ở một Region khác.
 
-## Amazon Athena có thể dùng để làm gì?
+AWS có một service hỗ trợ giải quyết vấn đề này là **AWS Resource Explorer**. Service này cho phép tìm kiếm tài nguyên trong tài khoản AWS dựa trên tên, ID, Region, loại tài nguyên và tag. Cách sử dụng khá giống một công cụ tìm kiếm dành riêng cho tài nguyên AWS.
 
-Sau khi tìm hiểu, mình thấy Athena phù hợp với khá nhiều trường hợp như:
+## AWS Resource Explorer dùng để làm gì?
 
-- Phân tích file CSV hoặc JSON lưu trên S3.
-- Truy vấn log từ CloudTrail, VPC Flow Logs hoặc Application Logs.
-- Phân tích dữ liệu phục vụ báo cáo.
-- Hỗ trợ xây dựng Data Lake kết hợp với Amazon S3.
-- Làm nguồn dữ liệu cho Amazon QuickSight để trực quan hóa dữ liệu.
+Trong một tài khoản AWS, tài nguyên có thể nằm rải rác ở nhiều nơi, chẳng hạn như:
+
+- EC2 instance tại Singapore.
+- DynamoDB table tại Tokyo.
+- Lambda function tại North Virginia.
+- S3 bucket có phạm vi toàn cầu.
+- Một số tài nguyên thử nghiệm đã được tạo từ trước nhưng chưa xóa.
+
+Thay vì phải lần lượt chuyển qua từng Region và mở từng service để kiểm tra, Resource Explorer cho phép tìm các tài nguyên đó từ một giao diện chung.
+
+{{% notice note %}}
+Resource Explorer duy trì các index chứa thông tin về tài nguyên trong từng Region. Khi cấu hình một Region làm aggregator index, người dùng có thể tìm kiếm tài nguyên từ nhiều Region tại một nơi.
+{{% /notice %}}
+
+## Các bước thực hành
+
+Trong bài thực hành này, mình thử tìm các tài nguyên EC2, S3 và những tài nguyên chưa được gắn tag.
+
+**Bước 1:** Truy cập AWS Resource Explorer.
+
+Đăng nhập AWS Management Console và tìm: AWS Resource Explorer
+
+Sau đó chọn Resource search.
+
+AWS hiện cho phép người dùng có quyền phù hợp bắt đầu tìm kiếm ngay khi truy cập service. Với policy `AWSResourceExplorerReadOnlyAccess`, người dùng có thể nhận kết quả tìm kiếm ban đầu. Để có inventory đầy đủ và tự động tạo các thành phần cần thiết, tài khoản cần thêm quyền `iam:CreateServiceLinkedRole`, quyền này được bao gồm trong policy `AWSResourceExplorerFullAccess`.
+
+**Bước 2:** Thử tìm tất cả tài nguyên EC2.
+
+Trong ô tìm kiếm, nhập:
+
+```text
+service:ec2
+```
+
+Query này trả về các tài nguyên được quản lý bởi Amazon EC2 mà Resource Explorer đã lập index.
+Nếu chỉ muốn tìm EC2 instance, có thể dùng query cụ thể hơn:
+
+```text
+resourcetype:ec2:instance
+```
+
+Resource Explorer hỗ trợ các bộ lọc như `service`, `resourcetype`, `region`, `tag` và nhiều loại metadata khác.
+
+**Bước 3:** Tìm tài nguyên trong một Region.
+
+Để tìm tài nguyên tại Region Singapore, nhập:
+
+```text
+region:ap-southeast-1
+```
+
+Có thể kết hợp nhiều điều kiện:
+
+```text
+service:ec2 region:ap-southeast-1
+```
+
+Query trên chỉ tìm tài nguyên thuộc EC2 tại Region Singapore.
 
 {{% notice tip %}}
-Điểm mình thấy hay là chỉ cần dữ liệu nằm trên S3 là đã có thể sử dụng SQL để truy vấn mà không cần import vào database trước.
+Khi sử dụng nhiều bộ lọc, Resource Explorer kết hợp chúng để thu hẹp kết quả tìm kiếm. Đây là cách khá tiện khi tài khoản có nhiều loại tài nguyên khác nhau.
 {{% /notice %}}
 
-## Truy vấn dữ liệu bằng Amazon Athena
+**Bước 4:** Tìm tài nguyên theo tag.
 
-Để hiểu rõ hơn, mình thử làm theo một ví dụ đơn giản với file CSV lưu trên S3.
+Giả sử các tài nguyên production được gắn tag:
 
-**Bước 1:** Tạo một S3 Bucket và tải lên file dữ liệu `students.csv`. Nội dung gồm các cột như:
-- id
-- name
-- major
-- gpa
-
-**Bước 2:**Truy cập AWS Console và mở Amazon Athena.
-
-Lần đầu sử dụng, Athena sẽ yêu cầu cấu hình một S3 Bucket để lưu kết quả truy vấn.
-
-**Bước 3:** Tạo Database.
-
-```sql
-CREATE DATABASE university;
+```text
+Environment=Production
 ```
 
-**Bước 4:** Tạo bảng tham chiếu đến file trên S3.
+Có thể tìm bằng query:
 
-```sql
-CREATE EXTERNAL TABLE students (
-    id INT,
-    name STRING,
-    major STRING,
-    gpa DOUBLE
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-LOCATION 's3://your-bucket/students/';
+```text
+tag:Environment=Production
 ```
+
+Hoặc kết hợp với loại service:
+
+```text
+service:ec2 tag:Environment=Production
+```
+
+Để tìm theo tag, view đang sử dụng phải được cấu hình bao gồm thuộc tính `tags`. View mặc định được tạo trong quá trình thiết lập đầy đủ thường hỗ trợ việc tìm kiếm này.
+
+**Bước 5:** Tìm những tài nguyên chưa được gắn tag
+Một query mình thấy khá hữu ích là:
+
+```text
+tag:none
+```
+
+Query này trả về các tài nguyên không có tag do người dùng tạo.
+
+Trong thực tế, việc tìm các tài nguyên chưa có tag giúp kiểm tra lại những tài nguyên chưa được phân loại theo project, environment hoặc owner. Đây cũng có thể là bước đầu tiên trước khi rà soát chi phí hoặc dọn dẹp tài nguyên thử nghiệm.
+
+Có thể giới hạn kết quả trong một Region:
+
+```text
+tag:none region:ap-southeast-1
+```
+
+**Bước 6:** Bật tìm kiếm trên nhiều Region
+
+Nếu tài khoản chưa bật cross-Region search, vào: AWS Resource Explorer → Settings
+
+Chọn **Complete setup and enable cross-Region search**. Tiếp theo:
+
+1. Chọn một Region làm aggregator index, chẳng hạn Singapore.
+2. Chọn **Enable cross-Region search in all Regions**.
+3. Xác nhận thiết lập.
+4. Theo dõi trạng thái indexing.
+5. Sau khi hoàn tất, quay lại Resource search và chọn view thuộc aggregator Region.
+
+AWS sẽ tạo index trong các Region được chọn, chuyển index của Region chính thành aggregator index và tạo default view để tìm tài nguyên trên các Region đó.
 
 {{% notice note %}}
-Athena chỉ tạo metadata, dữ liệu vẫn nằm trên S3 và không bị sao chép sang nơi khác.
+Cần lưu ý rằng quá trình indexing không phải lúc nào cũng hoàn thành ngay. Theo tài liệu AWS, tài nguyên có tag thường xuất hiện sau vài phút, trong khi tài nguyên không có tag có thể cần nhiều thời gian hơn. Quá trình đồng bộ ban đầu đến aggregator index cũng có thể có độ trễ.
 {{% /notice %}}
 
-**Bước 5:** Thực hiện truy vấn.
+## Những điểm mình thấy hữu ích
 
-```sql
-SELECT name, gpa
-FROM students
-WHERE gpa >= 3.5;
-```
+Điểm hữu ích nhất của Resource Explorer là không phải nhớ chính xác tài nguyên nằm ở Region nào.
 
-{{% notice note %}}
-Sau vài giây, kết quả sẽ hiển thị ngay trên giao diện Athena.
-{{% /notice %}}
+Service này cũng hỗ trợ tìm kiếm theo nhiều loại metadata. Ví dụ, thay vì chỉ tìm tên tài nguyên, người dùng có thể tìm theo service, resource type, Region hoặc tag.
 
-## Ưu điểm
+Resource Explorer còn được tích hợp với thanh Unified Search trên AWS Management Console. Vì vậy, trong một số trường hợp có thể tìm tài nguyên ngay trên thanh tìm kiếm phía trên của Console mà không cần mở riêng Resource Explorer.
 
-Sau khi tìm hiểu, mình thấy Amazon Athena có khá nhiều ưu điểm.
+Một điểm khác là Resource Explorer hỗ trợ sử dụng view để kiểm soát phạm vi tài nguyên mà từng người dùng được phép tìm thấy. Ví dụ, một view có thể chỉ hiển thị các tài nguyên mang tag `Environment=Production`, sau đó chỉ cấp quyền truy cập view đó cho nhóm vận hành phù hợp.
 
-Đầu tiên là không cần cài đặt hay quản lý máy chủ cơ sở dữ liệu. Điều này giúp việc bắt đầu phân tích dữ liệu trở nên nhanh hơn.
+## Một số hạn chế cần lưu ý
 
-Thứ hai là Athena hỗ trợ nhiều định dạng dữ liệu khác nhau. Nếu dữ liệu được lưu dưới dạng Parquet hoặc ORC thì hiệu năng truy vấn cũng sẽ tốt hơn.
+Resource Explorer là công cụ tìm kiếm và khám phá tài nguyên, không phải công cụ quản lý toàn bộ tài nguyên. Sau khi tìm thấy một EC2 instance hoặc DynamoDB table, người dùng thường vẫn phải mở trang quản lý của service tương ứng để thay đổi cấu hình.
 
-Ngoài ra, Athena tích hợp tốt với nhiều dịch vụ AWS như AWS Glue Data Catalog, Amazon QuickSight và Amazon S3, phù hợp để xây dựng các hệ thống phân tích dữ liệu.
+Kết quả tìm kiếm cũng phụ thuộc vào quyền IAM, view và trạng thái indexing. Vì vậy, việc một tài nguyên không xuất hiện chưa chắc có nghĩa là tài nguyên đó không tồn tại.
 
-## Một số điểm cần lưu ý
+Với quyền read-only cơ bản, người dùng có thể chỉ nhận được kết quả một phần. Muốn có inventory hoàn chỉnh hoặc tìm kiếm trên nhiều Region thì cần thực hiện thêm phần thiết lập và có các quyền phù hợp.
 
-Bên cạnh những ưu điểm trên, mình cũng thấy có một số điều cần cân nhắc. Athena được tính phí dựa trên dung lượng dữ liệu được quét trong mỗi truy vấn. Vì vậy, nếu dữ liệu chưa được tối ưu hoặc sử dụng `SELECT *` trên các file rất lớn thì chi phí có thể tăng lên.
+Ngoài ra, khi dùng từ khóa tự do, thao tác Search có giới hạn số lượng kết quả được trả về. Nếu tài khoản có rất nhiều tài nguyên, nên sử dụng thêm các bộ lọc như Region, service hoặc resource type để thu hẹp kết quả.
 
-Theo tài liệu của AWS, để giảm chi phí và tăng hiệu năng, nên:
-- Sử dụng định dạng cột như Parquet hoặc ORC.
-- Phân vùng dữ liệu - Partitioning.
-- Chỉ truy vấn các cột cần thiết thay vì lấy toàn bộ dữ liệu.
+## Chi phí
 
-## Khi nào nên sử dụng?
+Theo trang pricing của AWS, Resource Explorer được cung cấp mà không có phí sử dụng bổ sung và không có phí thiết lập ban đầu.
 
-Theo mình, Amazon Athena sẽ phù hợp khi:
-
-- Muốn phân tích dữ liệu lưu trên Amazon S3.
-- Cần kiểm tra nhanh các file CSV hoặc JSON.
-- Phân tích log của hệ thống.
-- Xây dựng Data Lake mà không muốn vận hành database riêng.
-- Kết hợp với QuickSight để tạo dashboard.
+Tuy nhiên, một số tính năng hiển thị trong Resource Explorer có thể phụ thuộc vào các dịch vụ khác như AWS Config. Các dịch vụ liên quan vẫn có thể tính phí riêng. Một số API List hoặc Describe của service được gọi cũng có thể phát sinh phí nếu service đó áp dụng cách tính phí cho các API này.
 
 ## Kết luận
 
-Sau khi tìm hiểu, mình thấy Amazon Athena là một service khá tiện lợi cho các bài toán phân tích dữ liệu. Chỉ với Amazon S3 và một vài câu lệnh SQL, mình đã có thể truy vấn dữ liệu mà không cần triển khai thêm một hệ quản trị cơ sở dữ liệu. Mình nghĩ đây là một dịch vụ đáng thử nếu đang học về Data Analytics hoặc làm các dự án cần xử lý dữ liệu trên AWS.
+Sau khi thử AWS Resource Explorer, mình thấy đây là một service khá đơn giản nhưng hữu ích, đặc biệt khi tài khoản có tài nguyên nằm ở nhiều Region.
+
+Service này không trực tiếp tối ưu chi phí hay bảo mật hệ thống, nhưng giúp người dùng có cái nhìn rõ hơn về những tài nguyên đang tồn tại. Từ đó, việc kiểm tra tài nguyên thử nghiệm, tìm tài nguyên thiếu tag hoặc xác định vị trí của một resource trở nên nhanh hơn.
+
+Đối với các tài khoản học tập, Resource Explorer cũng có thể giúp kiểm tra xem mình có vô tình để lại tài nguyên ở một Region khác sau khi hoàn thành bài lab hay không.
+
+Mọi người đã từng gặp trường hợp không tìm thấy tài nguyên chỉ vì chọn nhầm Region chưa? Mình rất mong được nghe thêm các trường hợp thực tế khi sử dụng Resource Explorer.
 
 ## Tài liệu tham khảo
-1. [AWS Documentation – Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html)
-2. [Getting Started with Amazon Athena](https://docs.aws.amazon.com/.../ug/getting-started.html)
-3. [Amazon Athena User Guide](https://docs.aws.amazon.com/athena/latest/ug/)
-4. [Amazon Athena Pricing](https://aws.amazon.com/athena/pricing/)
+
+1. [AWS Resource Explorer User Guide:](https://docs.aws.amazon.com/.../userguide/welcome.html)
+
+2. [Hướng dẫn bắt đầu với Resource Explorer:](https://docs.aws.amazon.com/resource-explorer/latest/userguide/getting-started.html)
+
+3. [Hướng dẫn tìm kiếm tài nguyên:](https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search.html)
+
+4. [Cú pháp truy vấn Resource Explorer:](https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query-syntax.html)
+
+5. [Ví dụ các câu truy vấn:](https://docs.aws.amazon.com/resource-explorer/latest/userguide/using-search-query-examples.html)
+
+6. [Thiết lập tìm kiếm trên nhiều Region:](https://docs.aws.amazon.com/resource-explorer/latest/userguide/getting-started-setting-up.html)
+
+7. [Chi phí AWS Resource Explorer:](https://aws.amazon.com/resourceexplorer/pricing/)

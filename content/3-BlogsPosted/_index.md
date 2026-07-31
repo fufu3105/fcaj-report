@@ -1,26 +1,26 @@
 ---
-title: "Blogs Posted"
-date: 2024-01-01
+title: "Published Blog Posts"
+date: 2026-07-29
 weight: 3
 chapter: false
 pre: " <b> 3. </b> "
 ---
 
 {{% notice info %}}
-Links to articles posted on [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj):
-1. [Amazon Athena – Analyzing Data on S3 Using SQL Without Creating a Database](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2226781804753446/?rdid=EXSxKmYwwkha8Juz#)
+Links to published articles on [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj):
+1. [Exploring AWS Resource Explorer – Find AWS Resources Across Multiple Regions from a Single Place](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2224928494938777/?rdid=vbIwBrlARigM8QBf#)
 2. [Exploring Amazon Macie – Automatically Discover Sensitive Data in Amazon S3](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2226994294732197/?rdid=nvuJgxt0fq35mKfn#)
-3. [Exploring Amazon Simple Email Service (Amazon SES) – AWS Email Sending Service](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2224776141620679/?rdid=4thpf7DkNOzlJPvf#)
+3. [Exploring Amazon Data Lifecycle Manager (DLM) – Automatically Manage EBS Snapshots](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2228862021212091/?rdid=TQC4afljqtCu4V0S#)
 {{% /notice %}}
 
-###  [BLOG 1 - AMAZON ATHENA - ANALYZING DATA ON S3 USING SQL WITHOUT CREATING A DATABASE](3.1-Blog1/)
+### [BLOG 1 - EXPLORING AWS RESOURCE EXPLORER – FIND AWS RESOURCES ACROSS MULTIPLE REGIONS FROM A SINGLE PLACE](3.1-Blog1/)
 
-This blog introduces Amazon Athena, a serverless service that allows direct querying of data (such as CSV, JSON, Parquet, ORC, and Avro) stored in Amazon S3 using familiar SQL syntax. It outlines specific steps to create reference tables and analyze data without needing to install or manage any database servers, while also highlighting advantages and important considerations to optimize query costs.
+Helps search, discover, and quickly locate AWS resources scattered across multiple Regions from a single centralized interface based on name, ID, resource type, service, or tag.
 
-###  [BLOG 2 - EXPLORING AMAZON MACIE – AUTOMATICALLY DISCOVER SENSITIVE DATA IN AMAZON S3](3.2-Blog2/)
+### [BLOG 2 - EXPLORING AMAZON MACIE – AUTOMATICALLY DISCOVER SENSITIVE DATA IN AMAZON S3](3.2-Blog2/)
 
-Uses Machine Learning and Pattern Matching to automatically discover sensitive data (such as Personally Identifiable Information (PII), credit card numbers, emails, and phone numbers) stored in Amazon S3 to enhance data security.
+Uses Machine Learning and Pattern Matching to automatically discover sensitive data (such as PII, credit card numbers, emails, and phone numbers) stored in Amazon S3 to enhance data security.
 
-###  [BLOG 3 - EXPLORING AMAZON SIMPLE EMAIL SERVICE (AMAZON SES) – AWS EMAIL SENDING SERVICE](3.3-Blog3/)
+### [BLOG 3 - EXPLORING AMAZON DATA LIFECYCLE MANAGER (DLM) – AUTOMATICALLY MANAGE EBS SNAPSHOTS](3.3-Blog3/)
 
-This blog introduces Amazon Simple Email Service (SES), a specialized service that helps applications send and receive emails on the AWS platform at scale, from small to large. It outlines specific steps to set up, verify email addresses, send test emails via the Console, or integrate via SMTP/API, while also highlighting its advantages, Sandbox mode, and important considerations for practical deployment.
+Automates the entire process of creating, periodically storing, and cleaning up old EBS Snapshots via Tag-based Lifecycle Policies, saving time and optimizing storage costs.
