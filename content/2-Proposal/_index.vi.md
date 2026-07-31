@@ -34,7 +34,7 @@ _Giải pháp_
 
 ### 3. Kiến trúc giải pháp
 
-![Kiến trúc tổng thể](/images/2-Proposal/diagram.png)
+![Kiến trúc tổng thể](/images/5-Workshop/5.1-Workshop-overview/overall_architecture.png)
 
 _Dịch vụ AWS sử dụng_
 

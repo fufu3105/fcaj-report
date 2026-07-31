@@ -34,7 +34,7 @@ To resolve the aforementioned issues, the platform needs to shift from a **passi
 
 ### 3. Solution Architecture
 
-![Overall Architecture](/images/2-Proposal/diagram.png)
+![Overall Architecture](/images/5-Workshop/5.1-Workshop-overview/overall_architecture.png)
 
 _Utilized AWS Services_
 
