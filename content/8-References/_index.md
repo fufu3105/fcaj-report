@@ -14,7 +14,7 @@ This section collects the source code, demo, official AWS documentation, and rep
 |---|---|
 | Movie recommendation source code | [GitHub - movie-recommendation-system](https://github.com/CaPPok/movie-recommendation-system) |
 | Report and workshop repository | [GitHub - movie-project-report](https://github.com/tanghongai1704/movie-project-report) |
-| Published report website | [GitHub Pages - movie-project-report](https://tanghongai1704.github.io/movie-project-report/) |
+| Published report website | [GitHub Pages - movie-project-report](https://github.com/fufu3105/fcaj-report) |
 
 ## Demo
 

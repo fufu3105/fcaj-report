@@ -14,7 +14,7 @@ Mục này tập hợp mã nguồn, bản demo, tài liệu AWS chính thức v�
 |---|---|
 | Mã nguồn hệ thống gợi ý phim | [GitHub - movie-recommendation-system](https://github.com/CaPPok/movie-recommendation-system) |
 | Repository báo cáo và workshop | [GitHub - movie-project-report](https://github.com/tanghongai1704/movie-project-report) |
-| Website báo cáo | [GitHub Pages - movie-project-report](https://tanghongai1704.github.io/movie-project-report/) |
+| Website báo cáo | [GitHub Pages - movie-project-report](https://github.com/fufu3105/fcaj-report) |
 
 ## Demo
 
