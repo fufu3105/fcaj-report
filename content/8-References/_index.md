@@ -10,16 +10,15 @@ This section collects the source code, demo, official AWS documentation, and rep
 
 ## Project Resources
 
-| Resource | Link |
+
+| Resources | Links |
 |---|---|
-| Movie recommendation source code | [GitHub - movie-recommendation-system](https://github.com/CaPPok/movie-recommendation-system) |
-| Report and workshop repository | [GitHub - movie-project-report](https://github.com/tanghongai1704/movie-project-report) |
-| Published report website | [GitHub Pages - movie-project-report](https://github.com/fufu3105/fcaj-report) |
+| Movie Recommendation System Source Code | [GitHub - movie-project-report](https://github.com/tanghongai1704/movie-project-report) |
+| Model Processing System Source Code | [GitHub - movie-recommendation-system](https://github.com/CaPPok/movie-recommendation-system) |
 
 ## Demo
 
-- [Google Drive - Movie recommendation system demo](https://drive.google.com/drive/folders/1TNqHmVXZxYamXQ_ZqLBBzCpeKkqFaSAn?usp=sharing)
-
+- [Google Drive - Movie Recommendation System Demo](https://drive.google.com/drive/folders/1TNqHmVXZxYamXQ_ZqLBBzCpeKkqFaSAn?usp=sharing)
 
 ## Official AWS Documentation
 
