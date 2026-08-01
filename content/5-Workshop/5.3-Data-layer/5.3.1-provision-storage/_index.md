@@ -110,25 +110,3 @@ The bucket must exist and have appropriate Block Public Access and encryption se
 
 *Bucket Versioning is `Enabled`; MFA delete is `Disabled`.*
 
-## 6. Verify the Prefixes
-
-Retrieve no more than one object to avoid reading unnecessary data:
-
-```bash
-aws s3api list-objects-v2 \
-  --bucket "<S3_BUCKET_NAME>" \
-  --prefix "<RAW_PREFIX>" \
-  --max-items 1
-```
-
-Repeat with the `processed`, `training`, `inference`, `models`, `evaluation`, and `interaction exports` prefixes.
-
-An empty prefix is not necessarily an error. `AccessDenied`, an incorrect Region, or a nonexistent bucket indicates an issue that must be resolved.
-
-## 7. When Resources Do Not Exist
-
-If a table or bucket is missing:
-
-1. Stop the deployment step.
-2. Record the required Region, key schema, billing mode, TTL, encryption, lifecycle, and IAM owner.
-3. Ask the platform/security team to provide the resource or reviewed IaC.
