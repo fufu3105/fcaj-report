@@ -6,13 +6,6 @@ chapter: false
 pre: " <b> 5.5. </b> "
 ---
 
-Repository sử dụng default credential provider chain của boto3:
-
-- Developer nên dùng AWS IAM Identity Center hoặc profile.
-- EC2 sử dụng instance profile.
-- SageMaker sử dụng execution role.
-
-Exact role name, JSON policy, trust relationship và ARN chưa được lưu trong repository.
 
 ![Luồng credential giữa developer, EC2 và các dịch vụ AWS](/images/5-Workshop/5.5-IAM-security/security-credential-flow.png)
 
