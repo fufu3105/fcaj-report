@@ -75,10 +75,8 @@ Khi push branch `main`, GitHub Actions:
 
 1. Build frontend.
 2. Cài dependency backend và chạy `compileall`.
-3. SSH vào EC2.
-4. Chuyển tới `EC2_APP_DIR`.
-5. Pull source từ `main`.
-6. Chạy Docker Compose.
+3. Pull source từ `main`.
+4. Chạy Docker Compose.
 
 ![GitHub Actions workflow build thành công](/images/5-Workshop/5.4-Recommendation-pipeline/5.4.3-integrate-ec2-application/github-actions-build-success.png)
 
@@ -127,10 +125,4 @@ Kết quả mong đợi:
 ![Swagger UI của Movie Recommendation API chạy trên EC2](/images/5-Workshop/5.4-Recommendation-pipeline/5.4.3-integrate-ec2-application/ec2-fastapi-swagger-ui.png)
 
 
-## 9. Phân biệt EC2 application và EC2 retraining
-
-`ml/deploy/ec2_bootstrap.sh` cấu hình một systemd timer cho retraining, không phải web deployment. Template này hiện cần sửa:
-
-- Subdirectory mặc định không trùng path submodule `ml`.
-- Event prefix `events/` không trùng cấu hình canonical `datasets/exports/`.
 
