@@ -120,10 +120,3 @@ Expected results:
 - Startup logs do not expose credentials.
 
 ![Swagger UI for the Movie Recommendation API running on EC2](/images/5-Workshop/5.4-Recommendation-pipeline/5.4.3-integrate-ec2-application/ec2-fastapi-swagger-ui.png)
-
-## 9. Distinguish the EC2 Application from EC2 Retraining
-
-`ml/deploy/ec2_bootstrap.sh` configures a systemd timer for retraining, not web deployment. This template currently requires two fixes:
-
-- Its default subdirectory does not match the `ml` submodule path.
-- Its `events/` event prefix does not match the canonical `datasets/exports/` configuration.
