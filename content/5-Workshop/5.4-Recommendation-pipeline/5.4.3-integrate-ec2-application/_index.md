@@ -28,14 +28,6 @@ The repository does not create EC2 resources. The GitHub Actions workflow assume
 3. Add only the rules that are actually required, as shown in the table below.
 4. Select **Save rules** and verify access from an authorized client.
 
-| Purpose | Type/Protocol | Port | Recommended source |
-|---|---|---:|---|
-| Linux administration | SSH / TCP | 22 | `<ADMIN_PUBLIC_IP>/32`, a VPN CIDR, or a bastion security group; do not use `0.0.0.0/0` |
-| Web without TLS | HTTP / TCP | 80 | `0.0.0.0/0` and `::/0` only when the website must be public |
-| Web with TLS | HTTPS / TCP | 443 | `0.0.0.0/0` and `::/0` when the website must be public |
-| Direct application port | Custom TCP | `<APPLICATION_PORT>` | The load balancer/reverse proxy security group or an approved test CIDR |
-| Internal backend | Custom TCP | `<BACKEND_PORT>` | Do not create a public rule when the frontend/reverse proxy runs on the same host |
-
 ![Inbound rules of the EC2 security group](/images/5-Workshop/5.4-Recommendation-pipeline/5.4.3-integrate-ec2-application/ec2-security-group-inbound-rules.png)
 
 *The `launch-wizard-1` security group has three inbound TCP rules for SSH port `22`, frontend port `5173`, and backend port `8000`.*
